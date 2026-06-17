@@ -1092,6 +1092,8 @@ footer{
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
+
+/* ── Tablet landscape ──────────────────── */
 @media(max-width:1100px){
   .hero-layout{grid-template-columns:1fr;gap:40px}
   .hero-right{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -1099,26 +1101,133 @@ footer{
   .svc-grid{grid-template-columns:1fr 1fr}
   .proc-layout{grid-template-columns:1fr;gap:40px}
   .proc-left{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .circuit-svg{opacity:.15}
 }
+
+/* ── Tablet portrait ───────────────────── */
 @media(max-width:900px){
   .port-grid{grid-template-columns:1fr}
   .port-card.featured{grid-column:1;grid-row:auto}
   .foot-grid{grid-template-columns:1fr 1fr}
   .services-head-row{flex-direction:column;gap:16px}
   .contact-grid{grid-template-columns:1fr;gap:48px}
+  .circuit-svg{display:none}
+  .wrap{padding:0 24px}
 }
+
+/* ── Mobile ────────────────────────────── */
 @media(max-width:768px){
+  /* Nav */
   .nav-links,.nav-cta{display:none}
   .burger{display:flex}
   .mobile-menu{display:flex}
-  .svc-grid{grid-template-columns:1fr}
-  .hero-right{grid-template-columns:1fr}
-  .proc-left{grid-template-columns:1fr}
-  .foot-grid{grid-template-columns:1fr}
-  .about-grid{gap:32px}
-  .fg-row{grid-template-columns:1fr}
-  .hero-metrics{flex-wrap:wrap}
+  .nav-inner{padding:0 20px;height:60px}
+  .logo-mark{width:30px;height:30px;font-size:13px}
+
+  /* Global spacing */
+  .wrap{padding:0 20px}
+  section{padding:72px 0}
+
+  /* Hero */
+  .hero-inner{padding:100px 0 56px}
+  .hero-h1{font-size:clamp(36px,10vw,56px);line-height:1.05}
+  .hero-sub{font-size:14px;line-height:1.65}
+  .hero-actions{flex-direction:column;gap:12px}
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost{width:100%;justify-content:center;padding:16px 24px;font-size:14px}
+  .hero-metrics{flex-wrap:wrap;gap:12px}
+  .hero-metric{flex:1 1 calc(50% - 6px);min-width:0}
+  .hero-right{grid-template-columns:1fr;gap:12px}
+  .hero-right>*:nth-child(n+3){display:none}
+
+  /* About */
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .about-left h2{font-size:clamp(28px,8vw,42px)}
+  .manifesto{font-size:clamp(24px,7vw,36px) !important}
+
+  /* Services */
+  .svc-grid{grid-template-columns:1fr;gap:16px}
+  .svc-card{padding:28px 20px;margin-top:0 !important}
+  .svc-title{font-size:18px}
+  .services-head-row h2{font-size:clamp(28px,8vw,42px)}
+
+  /* Portfolio */
+  .port-grid{grid-template-columns:1fr}
+  .port-card{padding:24px 20px}
+  .port-card.featured .port-name{font-size:clamp(22px,6vw,32px)}
   .port-header{flex-direction:column;align-items:flex-start;gap:16px}
+
+  /* Process */
+  .proc-layout{grid-template-columns:1fr;gap:32px}
+  .proc-left{grid-template-columns:1fr;gap:16px}
+  .proc-step{padding:20px 16px}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .contact-left h2{font-size:clamp(28px,8vw,42px)}
+  .cform{padding:24px 16px;gap:16px}
+  .finput,.fselect,.ftextarea{font-size:16px;padding:14px 16px} /* 16px prevents iOS zoom */
+  .flabel{font-size:13px}
+  .fg-row{grid-template-columns:1fr}
+  .fsub{padding:16px;font-size:14px}
+  #wa-form-btn{padding:16px;font-size:14px}
+  .cmethod{padding:14px 16px}
+  .cmethod-icon{width:40px;height:40px;font-size:16px}
+  .cmethod-val{font-size:13px}
+
+  /* Footer */
+  .foot-grid{grid-template-columns:1fr;gap:32px}
+  .foot-brand p{max-width:100%}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px;text-align:left}
+  .foot-links{flex-wrap:wrap;gap:12px}
+
+  /* WhatsApp button — safe area for notch phones */
+  #wa-btn{
+    bottom:max(20px, env(safe-area-inset-bottom, 20px));
+    right:20px;
+    width:52px;height:52px
+  }
+  #wa-icon{width:26px;height:26px}
+  #wa-label{display:none}
+
+  /* Live feed — smaller on mobile */
+  #live-feed{left:12px;bottom:12px;max-width:240px}
+
+  /* Section titles global */
+  h2{font-size:clamp(26px,7.5vw,42px) !important}
+
+  /* Ticker */
+  .ticker-track{animation-duration:20s}
+}
+
+/* ── Small phones (< 480px) ────────────── */
+@media(max-width:480px){
+  .wrap{padding:0 16px}
+  section{padding:56px 0}
+  .hero-inner{padding:88px 0 48px}
+  .hero-h1{font-size:clamp(32px,9.5vw,48px)}
+  .hero-metric{flex:1 1 100%}
+  .svc-card{padding:24px 16px}
+  .port-card{padding:20px 16px}
+  .cform{padding:20px 14px}
+  .about-val{font-size:clamp(28px,9vw,42px)}
+  .stag{margin-bottom:12px}
+  .foot-grid{gap:24px}
+  #live-feed{display:none} /* Hidden on very small screens */
+  .boot-logo{font-size:clamp(22px,7vw,32px)}
+}
+
+/* ── Landscape orientation on phones ──── */
+@media(max-width:768px) and (orientation:landscape){
+  .hero-inner{padding:80px 0 40px}
+  .mobile-menu{max-height:80vh;overflow-y:auto}
+}
+
+/* ── Reduced motion ────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .ticker-track{animation:none}
+  #particle-canvas{display:none}
 }
 </style>
 </head>
