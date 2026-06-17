@@ -21,13 +21,19 @@ export default function Footer() {
               Desenvolvimento de software excepcional — full stack, focado no futuro e comprometido com o seu resultado.
             </p>
             <div className="flex gap-3">
-              {["in", "gh", "tw"].map((social) => (
+              {[
+                { label: "ig", href: "https://instagram.com/kodastack.dev", title: "Instagram da Koda Stack" },
+                { label: "ceo", href: "https://instagram.com/giraldidev", title: "CEO @giraldidev" },
+              ].map((social) => (
                 <a
-                  key={social}
-                  href="#"
+                  key={social.label}
+                  href={social.href}
+                  title={social.title}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-8 h-8 rounded-lg glass gradient-border flex items-center justify-center text-[10px] font-bold text-white/40 hover:text-white hover:border-white/20 transition-all"
                 >
-                  {social}
+                  {social.label}
                 </a>
               ))}
             </div>

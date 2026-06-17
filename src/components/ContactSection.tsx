@@ -81,7 +81,7 @@ export default function ContactSection() {
             <div className="flex flex-col gap-5">
               {[
                 { icon: "✉", label: "E-mail", value: "oi@kodastack.com.br" },
-                { icon: "📱", label: "WhatsApp", value: "+55 (11) 99999-0000" },
+                { icon: "📱", label: "WhatsApp", value: "+55 (14) 99823-8439" },
                 { icon: "📍", label: "Localização", value: "São Paulo, SP — Brasil" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
