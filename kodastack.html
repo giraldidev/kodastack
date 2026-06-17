@@ -511,6 +511,57 @@ body::after{
 .uptime-val{color:#28C840;flex-shrink:0}
 
 /* ═══════════════════════════════════════════
+   WHATSAPP BUTTON
+═══════════════════════════════════════════ */
+#wa-btn{
+  position:fixed;bottom:28px;right:28px;z-index:600;
+  display:flex;align-items:center;gap:0;
+  cursor:none;
+}
+/* Tooltip label */
+#wa-label{
+  background:rgba(2,12,24,.95);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:8px 14px;
+  font-family:var(--mono);font-size:12px;color:#fff;
+  white-space:nowrap;margin-right:12px;
+  opacity:0;transform:translateX(8px);
+  transition:opacity .25s,transform .25s;
+  pointer-events:none;
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+#wa-label strong{color:#25D366}
+#wa-btn:hover #wa-label{opacity:1;transform:translateX(0)}
+
+/* Circle icon */
+#wa-icon{
+  width:54px;height:54px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 0 rgba(37,211,102,.4);
+  animation:wa-pulse 2.5s ease-in-out infinite;
+  transition:transform .2s,box-shadow .2s;
+  flex-shrink:0;
+}
+#wa-icon:hover{transform:scale(1.1);box-shadow:0 0 24px rgba(37,211,102,.5)}
+@keyframes wa-pulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}
+  50%{box-shadow:0 0 0 12px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+
+/* Notification badge */
+#wa-badge{
+  position:absolute;top:-2px;right:-2px;
+  width:16px;height:16px;border-radius:50%;
+  background:#FF5F57;border:2px solid var(--c1);
+  font-size:9px;font-weight:700;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);
+  animation:blink 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════
    LIVE ACTIVITY FEED
 ═══════════════════════════════════════════ */
 #live-feed{
@@ -1105,6 +1156,23 @@ footer{
 
 <!-- Live feed (bottom-left) -->
 <div id="live-feed"></div>
+
+<!-- WhatsApp float button (bottom-right) -->
+<a id="wa-btn" href="#" target="_blank" rel="noopener" title="Fale pelo WhatsApp">
+  <div id="wa-label">
+    <strong>WhatsApp</strong> — resposta em minutos
+  </div>
+  <div style="position:relative">
+    <div id="wa-icon">
+      <!-- WhatsApp SVG official icon -->
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <path d="M16 3C8.82 3 3 8.82 3 16c0 2.38.65 4.61 1.78 6.53L3 29l6.64-1.74A13.03 13.03 0 0016 29c7.18 0 13-5.82 13-13S23.18 3 16 3z" fill="#fff"/>
+        <path d="M16 5.2A10.8 10.8 0 0126.8 16 10.8 10.8 0 0116 26.8a10.76 10.76 0 01-5.5-1.51l-.39-.23-4.05 1.06 1.08-3.94-.26-.41A10.77 10.77 0 015.2 16 10.8 10.8 0 0116 5.2zm-2.88 6.43c-.18-.4-.37-.41-.54-.42l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.17 1.7 2.72 4.18 3.7 2.07.82 2.49.66 2.94.62.45-.04 1.46-.6 1.66-1.17.2-.57.2-1.06.14-1.17-.06-.1-.22-.16-.46-.28-.24-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.24-.64.8-.78.96-.15.17-.29.19-.53.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.01-.37.1-.49.1-.1.24-.27.36-.4.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.33-.75-1.81z" fill="#25D366"/>
+      </svg>
+    </div>
+    <div id="wa-badge">1</div>
+  </div>
+</a>
 
 <!-- ════════════════════════════════════
      HEADER
@@ -1740,20 +1808,20 @@ footer{
             <div class="fg-row">
               <div class="fg">
                 <label class="flabel">Nome *</label>
-                <input class="finput" type="text" placeholder="Seu nome" required />
+                <input class="finput" id="f-nome" type="text" placeholder="Seu nome" required />
               </div>
               <div class="fg">
                 <label class="flabel">E-mail *</label>
-                <input class="finput" type="email" placeholder="seu@email.com" required />
+                <input class="finput" id="f-email" type="email" placeholder="seu@email.com" required />
               </div>
             </div>
             <div class="fg">
               <label class="flabel">Empresa</label>
-              <input class="finput" type="text" placeholder="Nome da empresa (opcional)" />
+              <input class="finput" id="f-empresa" type="text" placeholder="Nome da empresa (opcional)" />
             </div>
             <div class="fg">
               <label class="flabel">Tipo de projeto *</label>
-              <select class="fselect" required>
+              <select class="fselect" id="f-tipo" required>
                 <option value="">-- selecionar --</option>
                 <option>Aplicativo Mobile</option>
                 <option>Plataforma Web / SaaS</option>
@@ -1765,17 +1833,34 @@ footer{
             </div>
             <div class="fg">
               <label class="flabel">Briefing *</label>
-              <textarea class="ftextarea" rows="4" placeholder="Descreva o projeto, objetivos, prazo estimado e stack existente (se houver)..." required></textarea>
+              <textarea class="ftextarea" id="f-briefing" rows="4" placeholder="Descreva o projeto, objetivos, prazo estimado e stack existente (se houver)..." required></textarea>
             </div>
-            <button type="submit" class="fsub" id="fsub">
-              <span class="shine"></span>
-              <span class="flbl">
-                enviar proposta
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-            </button>
+
+            <!-- Submit options -->
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button type="submit" class="fsub" id="fsub">
+                <span class="shine"></span>
+                <span class="flbl">
+                  enviar por e-mail
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+              <!-- WhatsApp submit -->
+              <button type="button" id="wa-form-btn" onclick="submitWhatsApp()"
+                style="width:100%;padding:14px;border-radius:7px;background:#25D366;color:#fff;font-family:var(--mono);font-weight:700;font-size:13px;border:none;cursor:none;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;transition:box-shadow .3s,transform .2s">
+                <span class="shine"></span>
+                <span style="position:relative;z-index:1;display:flex;align-items:center;gap:10px">
+                  <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 3C8.82 3 3 8.82 3 16c0 2.38.65 4.61 1.78 6.53L3 29l6.64-1.74A13 13 0 0016 29c7.18 0 13-5.82 13-13S23.18 3 16 3z" fill="rgba(255,255,255,.3)"/>
+                    <path d="M13.12 11.63c-.18-.4-.37-.41-.54-.42l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.17 1.7 2.72 4.18 3.7 2.07.82 2.49.66 2.94.62.45-.04 1.46-.6 1.66-1.17.2-.57.2-1.06.14-1.17-.06-.1-.22-.16-.46-.28-.24-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.24-.64.8-.78.96-.15.17-.29.19-.53.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.01-.37.1-.49.1-.1.24-.27.36-.4.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42z" fill="#fff"/>
+                  </svg>
+                  continuar pelo WhatsApp
+                </span>
+              </button>
+            </div>
+
             <p style="text-align:center;font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:8px">
-              &lt;!-- sem spam · dados tratados com LGPD --&gt;
+              &lt;!-- sem spam · LGPD compliant --&gt;
             </p>
           </form>
 
@@ -1785,7 +1870,18 @@ footer{
             </div>
             <h3>Proposta recebida!</h3>
             <p>Retornaremos em até 24h com análise técnica inicial. Fique de olho no seu e-mail.</p>
-            <div style="font-family:var(--mono);font-size:11px;color:var(--text3)">// status: processing</div>
+            <div style="font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:16px">// status: processing</div>
+            <!-- WhatsApp follow-up -->
+            <a id="wa-success-link" href="#" target="_blank"
+              style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#25D366;color:#fff;border-radius:8px;font-family:var(--mono);font-weight:700;font-size:13px;text-decoration:none;transition:box-shadow .3s"
+              onmouseover="this.style.boxShadow='0 0 24px rgba(37,211,102,.4)'"
+              onmouseout="this.style.boxShadow='none'">
+              <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+                <path d="M16 3C8.82 3 3 8.82 3 16c0 2.38.65 4.61 1.78 6.53L3 29l6.64-1.74A13 13 0 0016 29c7.18 0 13-5.82 13-13S23.18 3 16 3z" fill="rgba(255,255,255,.3)"/>
+                <path d="M13.12 11.63c-.18-.4-.37-.41-.54-.42l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.17 1.7 2.72 4.18 3.7 2.07.82 2.49.66 2.94.62.45-.04 1.46-.6 1.66-1.17.2-.57.2-1.06.14-1.17-.06-.1-.22-.16-.46-.28-.24-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.24-.64.8-.78.96-.15.17-.29.19-.53.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.01-.37.1-.49.1-.1.24-.27.36-.4.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42z" fill="#fff"/>
+              </svg>
+              falar agora no WhatsApp
+            </a>
           </div>
         </div>
       </div>
@@ -2291,22 +2387,89 @@ document.querySelectorAll('.finput,.fselect,.ftextarea').forEach(el=>{
   });
 });
 
-/* ── Form submit ──────────────────────── */
+/* ══════════════════════════════════════════
+   WHATSAPP CONFIG
+   ⚠ Altere o número abaixo para o seu DDD+número (sem + ou espaços)
+══════════════════════════════════════════ */
+const WA_NUMBER = '5511999990000'; // Ex: 5511987654321
+
+function buildWAMessage(nome, empresa, tipo, briefing){
+  const lines = [
+    '👋 Olá! Vi a Koda Stack e gostaria de um orçamento.',
+    '',
+    `*Nome:* ${nome}`,
+    empresa ? `*Empresa:* ${empresa}` : null,
+    `*Tipo de projeto:* ${tipo}`,
+    '',
+    `*Briefing:*\n${briefing}`,
+    '',
+    '📅 Podemos conversar?',
+  ].filter(l=>l!==null);
+  return encodeURIComponent(lines.join('\n'));
+}
+
+function openWhatsApp(msg){
+  const url = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  window.open(url,'_blank','noopener,noreferrer');
+}
+
+/* Botão flutuante */
+(function(){
+  const btn = document.getElementById('wa-btn');
+  const msg = buildWAMessage('Visitante','','Projeto','Gostaria de saber mais sobre os serviços da Koda Stack.');
+  btn.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  // Entrada com delay para não disputar com o boot
+  gsap.fromTo(btn,
+    {opacity:0,scale:.6,y:20},
+    {opacity:1,scale:1,y:0,duration:.6,delay:3,ease:'back.out(1.5)'}
+  );
+  // Remove badge após 1ª hover
+  btn.addEventListener('mouseenter',()=>{
+    const badge=document.getElementById('wa-badge');
+    if(badge) gsap.to(badge,{scale:0,duration:.2,onComplete:()=>badge.remove()});
+  },{once:true});
+})();
+
+/* Formulário → WhatsApp */
+function submitWhatsApp(){
+  const form = document.getElementById('cform');
+  if(!form.checkValidity()){ form.reportValidity(); return; }
+  const nome     = document.getElementById('f-nome').value;
+  const email    = document.getElementById('f-email').value;
+  const empresa  = document.getElementById('f-empresa').value;
+  const tipo     = document.getElementById('f-tipo').value;
+  const briefing = document.getElementById('f-briefing').value;
+  const msg = buildWAMessage(nome, empresa, tipo,
+    `${briefing}\n\n📧 E-mail: ${email}`);
+  openWhatsApp(msg);
+  // Mostra success também
+  showSuccess(nome);
+}
+
+function showSuccess(nome){
+  document.getElementById('cform').style.display='none';
+  const s=document.getElementById('fsuccess');
+  s.style.display='flex';
+  gsap.from(s,{y:24,opacity:0,duration:.6,ease:'power3.out'});
+  // Personaliza link do botão no success
+  const waLink=document.getElementById('wa-success-link');
+  if(waLink){
+    const msg=buildWAMessage(nome||'Visitante','','','Acabei de enviar um briefing pelo site, podemos conversar?');
+    waLink.href=`https://wa.me/${WA_NUMBER}?text=${msg}`;
+  }
+}
+
+/* ── Form submit (e-mail) ─────────────── */
 function submitForm(e){
   e.preventDefault();
   const btn=document.getElementById('fsub');
   btn.disabled=true;
   const lbl=btn.querySelector('.flbl');
-  const orig=lbl.innerHTML;
   lbl.innerHTML='<svg class="spinner" width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-opacity=".2"/><path d="M4 12a8 8 0 018-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg> processando...';
   const spin=lbl.querySelector('.spinner');
   if(spin) gsap.to(spin,{rotation:360,duration:.7,repeat:-1,ease:'linear'});
-  setTimeout(()=>{
-    document.getElementById('cform').style.display='none';
-    const s=document.getElementById('fsuccess');
-    s.style.display='flex';
-    gsap.from(s,{y:24,opacity:0,duration:.6,ease:'power3.out'});
-  },1500);
+  const nome=document.getElementById('f-nome')?.value||'';
+  setTimeout(()=>showSuccess(nome),1400);
 }
 </script>
 </body>
