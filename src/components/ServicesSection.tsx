@@ -10,48 +10,52 @@ const services = [
   {
     icon: (
       <svg viewBox="0 0 40 40" fill="none" width={40} height={40}>
-        <rect x="6" y="8" width="28" height="18" rx="3" stroke="#F7E115" strokeWidth="1.5" />
-        <path d="M14 30h12M20 26v4" stroke="#F7E115" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M12 17l3 3 6-6" stroke="#F7E115" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="4" y="6" width="32" height="20" rx="2.5" stroke="#F7E115" strokeWidth="1.5"/>
+        <path d="M4 12h32" stroke="#F7E115" strokeWidth="1.5" strokeOpacity=".4"/>
+        <circle cx="8" cy="9" r="1.2" fill="#F7E115" fillOpacity=".5"/>
+        <circle cx="12" cy="9" r="1.2" fill="#F7E115" fillOpacity=".5"/>
+        <circle cx="16" cy="9" r="1.2" fill="#F7E115" fillOpacity=".5"/>
+        <path d="M12 19h16M16 23h8" stroke="#F7E115" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M14 33h12M20 26v7" stroke="#F7E115" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
-    category: "Produto Digital",
-    title: "Aplicativos Móveis & Plataformas Web",
+    category: "Conversão",
+    title: "Landing Pages de Alta Conversão",
     description:
-      "Desenvolvemos aplicações mobile nativas e cross-platform (iOS/Android) e plataformas web de alta conversão, com UX de classe mundial e performance acima da média do mercado.",
-    tags: ["React Native", "Next.js", "PWA", "iOS", "Android"],
+      "Páginas que vendem enquanto você dorme. Design premium, animações que encantam e copy estratégico — tudo otimizado para transformar visitante em lead.",
+    tags: ["Design Exclusivo", "GSAP Animations", "SEO Técnico", "Entrega em 7 dias"],
     accent: "#F7E115",
   },
   {
     icon: (
       <svg viewBox="0 0 40 40" fill="none" width={40} height={40}>
-        <rect x="6" y="6" width="12" height="12" rx="2" stroke="#61DAFB" strokeWidth="1.5" />
-        <rect x="22" y="6" width="12" height="12" rx="2" stroke="#61DAFB" strokeWidth="1.5" />
-        <rect x="6" y="22" width="12" height="12" rx="2" stroke="#61DAFB" strokeWidth="1.5" />
-        <rect x="22" y="22" width="12" height="12" rx="2" stroke="#61DAFB" strokeWidth="1.5" />
-        <path d="M18 12h4M20 6v28M6 20h28" stroke="#61DAFB" strokeWidth="1" strokeOpacity="0.4" />
+        <rect x="4" y="4" width="14" height="14" rx="2.5" stroke="#61DAFB" strokeWidth="1.5"/>
+        <rect x="22" y="4" width="14" height="14" rx="2.5" stroke="#61DAFB" strokeWidth="1.5"/>
+        <rect x="4" y="22" width="14" height="14" rx="2.5" stroke="#61DAFB" strokeWidth="1.5"/>
+        <rect x="22" y="22" width="14" height="14" rx="2.5" stroke="#61DAFB" strokeWidth="1.5"/>
+        <path d="M18 11h4M20 18v4M18 29h4" stroke="#61DAFB" strokeWidth="1" strokeOpacity=".4" strokeLinecap="round"/>
       </svg>
     ),
     category: "Enterprise",
-    title: "Sistemas Corporativos Complexos",
+    title: "Sistemas Empresariais sob Medida",
     description:
-      "Arquitetamos e entregamos sistemas ERP, CRM e plataformas B2B sob medida, com integrações robustas, escalabilidade na nuvem e segurança de nível bancário.",
-    tags: ["Microsserviços", "AWS", "PostgreSQL", "Docker", "CI/CD"],
+      "Softwares construídos para o jeito que sua empresa trabalha — não o contrário. Automatizamos processos, eliminamos planilhas e conectamos setores em uma única plataforma.",
+    tags: ["CRM & ERP", "Automação de Processos", "Integrações API", "Suporte Contínuo"],
     accent: "#61DAFB",
   },
   {
     icon: (
       <svg viewBox="0 0 40 40" fill="none" width={40} height={40}>
-        <path d="M20 6C12.268 6 6 12.268 6 20s6.268 14 14 14 14-6.268 14-14S27.732 6 20 6z" stroke="#68A063" strokeWidth="1.5" />
-        <path d="M20 6v28M6 20h28M9 11l22 18M31 11L9 29" stroke="#68A063" strokeWidth="1" strokeOpacity="0.3" />
-        <circle cx="20" cy="20" r="3" fill="#68A063" />
+        <circle cx="20" cy="20" r="14" stroke="#68A063" strokeWidth="1.5"/>
+        <path d="M20 12v8.5l4.5 2.5" stroke="#68A063" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M10 8C12.5 6.2 15.6 5 19 5" stroke="#68A063" strokeWidth="1.5" strokeLinecap="round" strokeOpacity=".4"/>
       </svg>
     ),
-    category: "Estratégia & Ops",
-    title: "Consultoria Tech & DevOps",
+    category: "Estratégia",
+    title: "Consultoria Técnica Estratégica",
     description:
-      "Auditoria arquitetural, migração para cloud, automação de pipelines e squads dedicados — transformamos o seu stack técnico em uma vantagem competitiva real.",
-    tags: ["Kubernetes", "Terraform", "GitHub Actions", "Observability"],
+      "Antes de escrever uma linha de código, a gente entende a sua dor. Mapeamos o problema real, desenhamos a solução ideal e entregamos um roadmap claro — sem achismos.",
+    tags: ["Diagnóstico de Negócio", "Mapeamento de Processos", "Tech Stack", "Roadmap"],
     accent: "#68A063",
   },
 ];
@@ -276,13 +280,12 @@ export default function ServicesSection() {
           </div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <h2 className="font-[family-name:var(--font-syne)] font-black text-4xl md:text-5xl text-white leading-tight max-w-xl">
-              Soluções que{" "}
-              <span className="text-[#F7E115]">transformam</span>{" "}
-              negócios.
+              O que a gente{" "}
+              <span className="text-[#F7E115]">faz de verdade</span>.
             </h2>
             <p className="text-white/45 text-sm max-w-xs leading-relaxed md:text-right">
-              Do conceito à produção — construímos produtos que
-              escalam e geram resultados mensuráveis.
+              Três serviços com foco total — cada um pensado para gerar
+              resultado real, não apenas entregar código.
             </p>
           </div>
         </div>
