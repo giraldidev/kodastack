@@ -2395,15 +2395,21 @@ const WA_NUMBER = '5514998238439';
 
 function buildWAMessage(nome, empresa, tipo, briefing){
   const lines = [
-    '👋 Olá! Vi a Koda Stack e gostaria de um orçamento.',
+    '⚡ *Novo contato via Koda Stack*',
     '',
-    `*Nome:* ${nome}`,
-    empresa ? `*Empresa:* ${empresa}` : null,
-    `*Tipo de projeto:* ${tipo}`,
+    '\u{1f9d1}‍\u{1f4bb} *Quem entra em contato*',
+    `└ Nome: ${nome}`,
+    empresa ? `└ Empresa: ${empresa}` : null,
     '',
-    `*Briefing:*\n${briefing}`,
+    '\u{1f4e6} *Sobre o projeto*',
+    `└ Tipo: ${tipo}`,
     '',
-    '📅 Podemos conversar?',
+    '\u{1f4cb} *Briefing*',
+    briefing,
+    '',
+    '――――――――――',
+    '\u{1f680} Aguardo o retorno para darmos inicio!',
+    '_Enviado via kodastack.com.br_',
   ].filter(l=>l!==null);
   return encodeURIComponent(lines.join('\n'));
 }
@@ -2416,7 +2422,7 @@ function openWhatsApp(msg){
 /* Botão flutuante */
 (function(){
   const btn = document.getElementById('wa-btn');
-  const msg = buildWAMessage('Visitante','','Projeto','Gostaria de saber mais sobre os serviços da Koda Stack.');
+  const msg = buildWAMessage('Visitante','','Consulta geral','\u{1f4ac} Olá! Vi o site da Koda Stack e gostaria de saber mais sobre os serviços e como vocês podem ajudar no meu projeto.');
   btn.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
   // Entrada com delay para não disputar com o boot
   gsap.fromTo(btn,
@@ -2440,7 +2446,7 @@ function submitWhatsApp(){
   const tipo     = document.getElementById('f-tipo').value;
   const briefing = document.getElementById('f-briefing').value;
   const msg = buildWAMessage(nome, empresa, tipo,
-    `${briefing}\n\n📧 E-mail: ${email}`);
+    `${briefing}\n\n\u{1f4e7} E-mail para retorno: ${email}`);
   openWhatsApp(msg);
   // Mostra success também
   showSuccess(nome);
@@ -2454,7 +2460,7 @@ function showSuccess(nome){
   // Personaliza link do botão no success
   const waLink=document.getElementById('wa-success-link');
   if(waLink){
-    const msg=buildWAMessage(nome||'Visitante','','','Acabei de enviar um briefing pelo site, podemos conversar?');
+    const msg=buildWAMessage(nome||'Visitante','','Acompanhamento','\u{2705} Acabei de enviar o briefing pelo site. Podemos agendar uma conversa para alinhar os detalhes?');
     waLink.href=`https://wa.me/${WA_NUMBER}?text=${msg}`;
   }
 }
