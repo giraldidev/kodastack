@@ -21,8 +21,8 @@ export default function AboutSection() {
   const counters = [
     { end: 50, suffix: "+", label: "Projetos" },
     { end: 98, suffix: "%", label: "Satisfação" },
-    { end: 7, suffix: "+", label: "Anos" },
-    { end: 12, suffix: "+", label: "Tecnologias" },
+    { end: 2, suffix: "+", label: "Anos" },
+    { end: 1000, suffix: "+", label: "Usuários" },
   ];
 
   useEffect(() => {
