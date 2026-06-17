@@ -35,6 +35,81 @@
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--sans);background:var(--c1);color:var(--text);overflow-x:hidden;cursor:none}
+body.loading{overflow:hidden}
+
+/* ═══════════════════════════════════════════
+   BOOT / PRELOADER
+═══════════════════════════════════════════ */
+#boot{
+  position:fixed;inset:0;z-index:10000;
+  background:var(--c0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:32px;
+}
+.boot-logo{
+  display:flex;align-items:center;gap:12px;
+  opacity:0;
+}
+.boot-mark{
+  width:48px;height:48px;border-radius:10px;
+  background:var(--yellow);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 40px rgba(247,225,21,.4);
+}
+.boot-mark span{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--c0)}
+.boot-wordmark{font-family:var(--display);font-weight:800;font-size:22px;color:#fff}
+.boot-wordmark em{color:var(--yellow);font-style:normal}
+
+.boot-lines{
+  width:380px;display:flex;flex-direction:column;gap:6px;
+  font-family:var(--mono);font-size:12px;
+}
+.boot-line{
+  display:flex;align-items:center;gap:10px;
+  color:rgba(255,255,255,.35);opacity:0;transform:translateX(-8px);
+}
+.boot-line .bl-icon{color:var(--yellow);flex-shrink:0}
+.boot-line.ok .bl-icon{color:#28C840}
+.boot-line.err .bl-icon{color:#FF5F57}
+
+.boot-bar-wrap{width:380px;opacity:0}
+.boot-bar-label{
+  display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.25);
+  margin-bottom:8px;
+}
+.boot-bar-track{
+  height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;
+}
+.boot-bar-fill{
+  height:100%;width:0%;background:var(--yellow);border-radius:2px;
+  box-shadow:0 0 8px rgba(247,225,21,.6);
+  transition:width .04s linear;
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL PROGRESS BAR
+═══════════════════════════════════════════ */
+#scroll-prog{
+  position:fixed;top:0;left:0;height:2px;width:0%;
+  background:linear-gradient(90deg,var(--yellow),rgba(0,212,255,.8));
+  z-index:9990;
+  box-shadow:0 0 8px rgba(247,225,21,.5);
+  transition:width .05s linear;
+}
+
+/* ═══════════════════════════════════════════
+   CIRCUIT BOARD DECORATION
+═══════════════════════════════════════════ */
+.circuit-svg{
+  position:absolute;pointer-events:none;opacity:.12;
+}
+.circuit-path{
+  fill:none;stroke:var(--yellow);stroke-width:.8;
+  stroke-dasharray:4 6;
+  animation:dash-flow 8s linear infinite;
+}
+.circuit-dot{fill:var(--yellow);opacity:.6}
+@keyframes dash-flow{to{stroke-dashoffset:-40}}
 
 /* ═══════════════════════════════════════════
    CUSTOM CURSOR
@@ -436,6 +511,32 @@ body::after{
 .uptime-val{color:#28C840;flex-shrink:0}
 
 /* ═══════════════════════════════════════════
+   LIVE ACTIVITY FEED
+═══════════════════════════════════════════ */
+#live-feed{
+  position:fixed;bottom:24px;left:24px;z-index:500;
+  display:flex;flex-direction:column;gap:8px;
+  pointer-events:none;
+}
+.feed-card{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(2,12,24,.92);
+  border:1px solid rgba(255,255,255,.1);
+  border-left:2px solid var(--yellow);
+  border-radius:8px;padding:10px 14px;
+  font-family:var(--mono);font-size:11px;
+  max-width:280px;
+  opacity:0;transform:translateX(-20px);
+  transition:opacity .4s,transform .4s;
+  backdrop-filter:blur(12px);
+}
+.feed-card.show{opacity:1;transform:translateX(0)}
+.feed-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;animation:blink 1.5s ease-in-out infinite}
+.feed-msg{color:rgba(212,220,232,.6);line-height:1.4}
+.feed-msg strong{color:#fff;font-weight:600}
+.feed-time{color:rgba(212,220,232,.25);margin-left:auto;white-space:nowrap;padding-left:8px}
+
+/* ═══════════════════════════════════════════
    TICKER (Tech marquee)
 ═══════════════════════════════════════════ */
 #ticker{
@@ -462,6 +563,15 @@ body::after{
   border-right:1px solid var(--border);white-space:nowrap;
 }
 .ticker-item .ti-dot{width:5px;height:5px;border-radius:50%;background:var(--yellow);opacity:.5}
+
+/* Section transition (horizontal rule with glow) */
+.sec-divider{
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(247,225,21,.2) 30%,rgba(0,212,255,.12) 60%,transparent 100%);
+}
+
+/* Parallax layer */
+.para-layer{will-change:transform}
 
 /* ═══════════════════════════════════════════
    ABOUT / MANIFESTO
@@ -963,9 +1073,38 @@ footer{
 </head>
 <body>
 
+<!-- Boot screen -->
+<div id="boot">
+  <div class="boot-logo" id="boot-logo">
+    <div class="boot-mark"><span>K//</span></div>
+    <span class="boot-wordmark">koda<em>stack</em></span>
+  </div>
+  <div class="boot-lines" id="boot-lines">
+    <div class="boot-line" data-delay="0"><span class="bl-icon">▶</span>Inicializando kernel do sistema...</div>
+    <div class="boot-line" data-delay="300"><span class="bl-icon">▶</span>Carregando módulos de segurança...</div>
+    <div class="boot-line ok" data-delay="600"><span class="bl-icon">✓</span>TLS 1.3 · criptografia ativa</div>
+    <div class="boot-line ok" data-delay="900"><span class="bl-icon">✓</span>CDN edge nodes conectados (6 regiões)</div>
+    <div class="boot-line ok" data-delay="1100"><span class="bl-icon">✓</span>API gateway online · latência P99: 42ms</div>
+    <div class="boot-line" data-delay="1350"><span class="bl-icon">▶</span>Compilando interface...</div>
+  </div>
+  <div class="boot-bar-wrap" id="boot-bar-wrap">
+    <div class="boot-bar-label">
+      <span class="mono" id="boot-bar-label">inicializando</span>
+      <span class="mono" id="boot-bar-pct">0%</span>
+    </div>
+    <div class="boot-bar-track"><div class="boot-bar-fill" id="boot-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- Scroll progress -->
+<div id="scroll-prog"></div>
+
 <!-- Custom Cursor -->
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
+
+<!-- Live feed (bottom-left) -->
+<div id="live-feed"></div>
 
 <!-- ════════════════════════════════════
      HEADER
@@ -1132,8 +1271,21 @@ footer{
      ABOUT / MANIFESTO
 ════════════════════════════════════ -->
 <section id="sobre">
+  <div class="sec-divider"></div>
   <div class="about-top-line"></div>
   <div class="grid-bg" style="position:absolute;inset:0;pointer-events:none;opacity:.4"></div>
+  <!-- Circuit decoration -->
+  <svg class="circuit-svg para-layer" data-speed=".3" style="top:10%;right:0;width:320px;height:280px" viewBox="0 0 320 280">
+    <path class="circuit-path" d="M280 20 L220 20 L220 80 L140 80 L140 40 L60 40"/>
+    <path class="circuit-path" d="M300 120 L240 120 L240 160 L160 160 L160 200 L80 200 L80 240 L20 240"/>
+    <path class="circuit-path" d="M320 60 L260 60 L260 100 L180 100"/>
+    <circle class="circuit-dot" cx="220" cy="20" r="3"/>
+    <circle class="circuit-dot" cx="140" cy="80" r="3"/>
+    <circle class="circuit-dot" cx="240" cy="120" r="3"/>
+    <circle class="circuit-dot" cx="160" cy="160" r="3"/>
+    <circle class="circuit-dot" cx="80" cy="200" r="3"/>
+    <circle class="circuit-dot" cx="260" cy="60" r="3"/>
+  </svg>
 
   <div class="wrap">
     <div class="about-grid">
@@ -1410,7 +1562,17 @@ footer{
      PROCESS
 ════════════════════════════════════ -->
 <section id="processo">
+  <div class="sec-divider"></div>
   <div class="grid-bg" style="position:absolute;inset:0;pointer-events:none;opacity:.35"></div>
+  <svg class="circuit-svg para-layer" data-speed=".2" style="bottom:5%;left:0;width:260px;height:220px" viewBox="0 0 260 220">
+    <path class="circuit-path" d="M0 40 L60 40 L60 100 L120 100 L120 60 L200 60"/>
+    <path class="circuit-path" d="M0 140 L40 140 L40 180 L100 180 L100 140 L180 140 L180 100 L240 100"/>
+    <circle class="circuit-dot" cx="60" cy="40" r="3"/>
+    <circle class="circuit-dot" cx="120" cy="100" r="3"/>
+    <circle class="circuit-dot" cx="40" cy="140" r="3"/>
+    <circle class="circuit-dot" cx="100" cy="180" r="3"/>
+    <circle class="circuit-dot" cx="180" cy="140" r="3"/>
+  </svg>
 
   <div class="wrap">
     <div class="proc-layout">
@@ -1686,6 +1848,61 @@ footer{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
+/* ══════════════════════════════════════════
+   BOOT SCREEN
+══════════════════════════════════════════ */
+(function(){
+  const boot   = document.getElementById('boot');
+  const logo   = document.getElementById('boot-logo');
+  const lines  = document.querySelectorAll('.boot-line');
+  const barWrap= document.getElementById('boot-bar-wrap');
+  const fill   = document.getElementById('boot-bar-fill');
+  const pct    = document.getElementById('boot-bar-pct');
+  const lbl    = document.getElementById('boot-bar-label');
+  document.body.classList.add('loading');
+
+  const labels=['inicializando','verificando','compilando','otimizando','pronto'];
+
+  // Show logo
+  gsap.to(logo,{opacity:1,duration:.5,delay:.1});
+
+  // Show lines one by one
+  lines.forEach((l,i)=>{
+    const d=parseInt(l.getAttribute('data-delay'))||0;
+    setTimeout(()=>{
+      gsap.to(l,{opacity:1,x:0,duration:.35,ease:'power2.out'});
+    },400+d);
+  });
+
+  // Show bar
+  setTimeout(()=>gsap.to(barWrap,{opacity:1,duration:.4}),500);
+
+  // Progress
+  let p=0;
+  const interval=setInterval(()=>{
+    p = Math.min(p + (Math.random()*3+1), 100);
+    fill.style.width=p+'%';
+    pct.textContent=Math.round(p)+'%';
+    lbl.textContent=labels[Math.floor(p/22)];
+    if(p>=100){
+      clearInterval(interval);
+      pct.textContent='100%';
+      lbl.textContent='sistema online';
+      setTimeout(exit,400);
+    }
+  },28);
+
+  function exit(){
+    gsap.to(boot,{
+      opacity:0,duration:.6,ease:'power2.inOut',
+      onComplete:()=>{
+        boot.style.display='none';
+        document.body.classList.remove('loading');
+      }
+    });
+  }
+})();
+
 /* ── Year ─────────────────────────────── */
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -1701,9 +1918,14 @@ window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
   requestAnimationFrame(moveCursor);
 })();
 
-/* ── Header scroll ────────────────────── */
-const hdr = document.getElementById('header');
-window.addEventListener('scroll',()=>hdr.classList.toggle('stuck',scrollY>50),{passive:true});
+/* ── Header scroll + Scroll progress ─── */
+const hdr  = document.getElementById('header');
+const prog = document.getElementById('scroll-prog');
+window.addEventListener('scroll',()=>{
+  hdr.classList.toggle('stuck',scrollY>50);
+  const max = document.body.scrollHeight - window.innerHeight;
+  prog.style.width = (scrollY/max*100)+'%';
+},{passive:true});
 
 /* ── Hamburger ────────────────────────── */
 const burger = document.getElementById('burger');
@@ -1868,6 +2090,52 @@ mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   }
 })();
 
+/* ── Parallax on circuit SVGs ─────────── */
+document.querySelectorAll('.para-layer').forEach(el=>{
+  const speed = parseFloat(el.getAttribute('data-speed')) || .3;
+  gsap.to(el,{
+    yPercent: -25 * speed,
+    ease:'none',
+    scrollTrigger:{
+      trigger: el.closest('section'),
+      start:'top bottom', end:'bottom top', scrub:1.5
+    }
+  });
+});
+
+/* ── Live activity feed ───────────────── */
+(function(){
+  const feed = document.getElementById('live-feed');
+  const msgs = [
+    {msg:'<strong>São Paulo, SP</strong> — novo acesso ao portfólio',t:'agora'},
+    {msg:'<strong>Rio de Janeiro</strong> — formulário iniciado',t:'1min'},
+    {msg:'<strong>Curitiba, PR</strong> — visualizando serviços',t:'3min'},
+    {msg:'<strong>Belo Horizonte</strong> — novo contato recebido ✓',t:'5min'},
+    {msg:'<strong>São Paulo, SP</strong> — lendo sobre o processo',t:'8min'},
+  ];
+  let idx=0;
+
+  function show(){
+    if(idx>=msgs.length) idx=0;
+    const m=msgs[idx++];
+    const card=document.createElement('div');
+    card.className='feed-card';
+    card.innerHTML=`<span class="feed-dot"></span><span class="feed-msg">${m.msg}</span><span class="feed-time">${m.t}</span>`;
+    feed.appendChild(card);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>card.classList.add('show')));
+    setTimeout(()=>{
+      card.classList.remove('show');
+      setTimeout(()=>card.remove(),400);
+    },4500);
+  }
+
+  // Start after boot (delay ~2.5s) then every ~9s
+  setTimeout(()=>{
+    show();
+    setInterval(show,9000);
+  },2600);
+})();
+
 /* ── Ticker ───────────────────────────── */
 (function(){
   const items=[
@@ -2003,6 +2271,25 @@ document.querySelectorAll('.svc-card').forEach(card=>{
     onEnter:()=>clearInterval(autoCycle)
   });
 })();
+
+/* ── Portfolio card hover color lift ─── */
+document.querySelectorAll('.port-card').forEach(card=>{
+  const line=card.querySelector('.port-accent-line');
+  if(!line) return;
+  card.addEventListener('mouseenter',()=>gsap.to(line,{opacity:1,duration:.3}));
+  card.addEventListener('mouseleave',()=>gsap.to(line,{opacity:.5,duration:.3}));
+});
+
+/* ── Input focus ripple ───────────────── */
+document.querySelectorAll('.finput,.fselect,.ftextarea').forEach(el=>{
+  el.addEventListener('focus',()=>{
+    gsap.fromTo(el,{boxShadow:'0 0 0 0 rgba(247,225,21,0)'},
+      {boxShadow:'0 0 0 3px rgba(247,225,21,.1)',duration:.3,ease:'power2.out'});
+  });
+  el.addEventListener('blur',()=>{
+    gsap.to(el,{boxShadow:'0 0 0 0 rgba(247,225,21,0)',duration:.3});
+  });
+});
 
 /* ── Form submit ──────────────────────── */
 function submitForm(e){
