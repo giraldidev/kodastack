@@ -221,19 +221,10 @@ body::after{
 /* Logo */
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{
-  width:34px;height:34px;border-radius:8px;
-  background:var(--yellow);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 20px rgba(247,225,21,.35);
-  transition:box-shadow .3s,transform .3s;
-  position:relative;overflow:hidden;
+  transition:filter .3s,transform .3s;
 }
-.logo-mark::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.25) 0%,transparent 60%);
-}
-.logo:hover .logo-mark{box-shadow:0 0 35px rgba(247,225,21,.6);transform:rotate(-3deg)}
-.logo-mark span{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--c0);position:relative;z-index:1}
+.logo:hover .logo-mark{filter:drop-shadow(0 0 10px rgba(247,225,21,.7));transform:rotate(-3deg)}
 .logo-name{font-family:var(--display);font-weight:800;font-size:17px;color:#fff;letter-spacing:-.01em}
 .logo-name em{color:var(--yellow);font-style:normal}
 
@@ -1122,7 +1113,7 @@ footer{
   .burger{display:flex}
   .mobile-menu{display:flex}
   .nav-inner{padding:0 20px;height:60px}
-  .logo-mark{width:30px;height:30px;font-size:13px}
+  .logo-mark svg{width:30px;height:30px}
 
   /* Global spacing */
   .wrap{padding:0 20px}
@@ -2053,7 +2044,17 @@ footer{
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#" class="logo">
-          <div class="logo-mark"><span>K//</span></div>
+          <div class="logo-mark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="34" height="34">
+              <defs><clipPath id="kc"><path d="M19 0L60 0L60 60L0 60L0 25L19 25Z"/></clipPath></defs>
+              <path d="M19 0L60 0L60 60L0 60L0 25L19 25Z" fill="#F7E115"/>
+              <g clip-path="url(#kc)" fill="#0A192F">
+                <rect x="4" y="0" width="11" height="60"/>
+                <polygon points="15,22 15,35 60,2 60,-11"/>
+                <polygon points="15,35 15,48 60,72 60,59"/>
+              </g>
+            </svg>
+          </div>
           <span class="logo-name">koda<em>stack</em></span>
         </a>
         <p>Engenharia de software de alto impacto. Full stack, focado no futuro, comprometido com o seu resultado.</p>
