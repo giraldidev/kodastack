@@ -1671,9 +1671,35 @@ footer{
       <!-- Summize — Featured -->
       <a href="https://pdfiasaas.vercel.app/" target="_blank" rel="noopener noreferrer" class="port-card featured gsap-hidden" style="display:flex;flex-direction:column;text-decoration:none;cursor:pointer">
         <div class="port-accent-line" style="background:linear-gradient(90deg,#7C6FFF,rgba(124,111,255,.1))"></div>
-        <div class="port-type mono">SaaS · IA · Produtividade · 2025</div>
-        <div class="port-name">Summize</div>
-        <span class="port-metric" style="color:#7C6FFF;background:rgba(124,111,255,.1);border:1px solid rgba(124,111,255,.25)">
+
+        <!-- Logo + header row -->
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:4px">
+          <!-- Summize logo SVG -->
+          <div style="width:44px;height:44px;border-radius:10px;background:rgba(124,111,255,.1);border:1px solid rgba(124,111,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="26" height="28" viewBox="0 0 80 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- top spike -->
+              <polygon points="40,0 46,22 34,22" fill="#9A8FFF" opacity=".9"/>
+              <!-- left spike -->
+              <polygon points="4,52 22,38 20,58" fill="#7C6FFF" opacity=".7"/>
+              <!-- right spike -->
+              <polygon points="76,52 58,38 60,58" fill="#7C6FFF" opacity=".7"/>
+              <!-- bottom-left spike -->
+              <polygon points="14,80 30,62 26,80" fill="#6357CC" opacity=".6"/>
+              <!-- bottom-right spike -->
+              <polygon points="66,80 50,62 54,80" fill="#6357CC" opacity=".6"/>
+              <!-- central shield body -->
+              <polygon points="40,18 62,36 58,62 40,74 22,62 18,36" fill="#7C6FFF" opacity=".85"/>
+              <!-- inner V shape -->
+              <polyline points="28,46 40,58 52,46" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="port-type mono" style="margin-bottom:2px">SaaS · IA · Produtividade · 2025</div>
+            <div class="port-name" style="line-height:1">Summize</div>
+          </div>
+        </div>
+
+        <span class="port-metric" style="color:#7C6FFF;background:rgba(124,111,255,.1);border:1px solid rgba(124,111,255,.25);margin-top:12px">
           <span class="m-dot" style="background:#7C6FFF"></span>+2.000 usuários satisfeitos
         </span>
         <p class="port-desc">SaaS de inteligência artificial que resume qualquer PDF em segundos — pontos principais, resumo completo e perguntas de estudo geradas automaticamente. Ideal para estudantes, profissionais e empresas que precisam absorver conteúdo com velocidade.</p>
