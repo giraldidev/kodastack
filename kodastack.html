@@ -7,7 +7,7 @@
 <meta name="description" content="Agência de desenvolvimento full stack. Sistemas que escalam. Interfaces que impressionam. Código que performa."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
@@ -32,6 +32,7 @@
   --mono:'JetBrains Mono',monospace;
   --sans:'Inter',sans-serif;
   --display:'Syne',sans-serif;
+  --wordmark:'Barlow Condensed','Syne',sans-serif;
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--sans);background:var(--c1);color:var(--text);overflow-x:hidden;cursor:none}
@@ -51,12 +52,10 @@ body.loading{overflow:hidden}
   opacity:0;
 }
 .boot-mark{
-  width:48px;height:48px;border-radius:10px;
-  background:var(--yellow);display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 40px rgba(247,225,21,.4);
+  display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 0 24px rgba(247,225,21,.5));
 }
-.boot-mark span{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--c0)}
-.boot-wordmark{font-family:var(--display);font-weight:800;font-size:22px;color:#fff}
+.boot-wordmark{font-family:var(--wordmark);font-weight:900;font-size:26px;color:#fff;letter-spacing:.04em;text-transform:uppercase}
 .boot-wordmark em{color:var(--yellow);font-style:normal}
 
 .boot-lines{
@@ -224,8 +223,8 @@ body::after{
   display:flex;align-items:center;justify-content:center;
   transition:filter .3s,transform .3s;
 }
-.logo:hover .logo-mark{filter:drop-shadow(0 0 10px rgba(247,225,21,.7));transform:rotate(-3deg)}
-.logo-name{font-family:var(--display);font-weight:800;font-size:17px;color:#fff;letter-spacing:-.01em}
+.logo:hover .logo-mark{filter:drop-shadow(0 0 12px rgba(247,225,21,.8));transform:rotate(-4deg)}
+.logo-name{font-family:var(--wordmark);font-weight:900;font-size:20px;color:#fff;letter-spacing:.06em;text-transform:uppercase}
 .logo-name em{color:var(--yellow);font-style:normal}
 
 /* Status pill */
@@ -352,9 +351,9 @@ body::after{
 
 /* Glitch heading */
 .hero-h1{
-  font-family:var(--display);font-weight:800;
-  font-size:clamp(40px,5.5vw,76px);
-  line-height:.96;letter-spacing:-.03em;
+  font-family:var(--wordmark);font-weight:900;
+  font-size:clamp(48px,6.5vw,90px);
+  line-height:.92;letter-spacing:.01em;
   color:#fff;margin-bottom:28px;
   position:relative;
   opacity:0;
@@ -631,7 +630,7 @@ body::after{
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 
 .manifesto{
-  font-family:var(--display);font-weight:700;
+  font-family:var(--wordmark);font-weight:900;
   font-size:clamp(28px,3.2vw,44px);
   line-height:1.1;color:#fff;
   margin-bottom:32px;
@@ -703,7 +702,7 @@ body::after{
 .services-header{display:flex;flex-direction:column;gap:0;margin-bottom:64px}
 .services-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
 .services-head-row h2{
-  font-family:var(--display);font-weight:800;
+  font-family:var(--wordmark);font-weight:900;
   font-size:clamp(28px,3.8vw,52px);
   color:#fff;line-height:1.05;
   max-width:520px;
@@ -789,7 +788,7 @@ body::after{
   display:flex;align-items:flex-end;justify-content:space-between;
   gap:32px;margin-bottom:56px;
 }
-.port-header h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,52px);color:#fff;line-height:1.05}
+.port-header h2{font-family:var(--wordmark);font-weight:900;font-size:clamp(28px,3.8vw,52px);color:#fff;line-height:1.05}
 .port-more{
   display:inline-flex;align-items:center;gap:6px;
   font-family:var(--mono);font-size:12px;color:var(--text3);
@@ -820,7 +819,7 @@ body::after{
   text-transform:uppercase;color:var(--text3);margin-bottom:8px;
 }
 .port-name{
-  font-family:var(--display);font-weight:800;font-size:28px;
+  font-family:var(--wordmark);font-weight:900;font-size:28px;
   color:#fff;margin-bottom:12px;line-height:1;
 }
 .port-card.featured .port-name{font-size:38px}
@@ -877,7 +876,7 @@ body::after{
 .proc-layout{display:grid;grid-template-columns:340px 1fr;gap:80px;align-items:start}
 
 .proc-left h2{
-  font-family:var(--display);font-weight:800;
+  font-family:var(--wordmark);font-weight:900;
   font-size:clamp(28px,3.2vw,44px);
   color:#fff;line-height:1.1;margin-bottom:20px;
 }
@@ -965,7 +964,7 @@ body::after{
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 
 .contact-left h2{
-  font-family:var(--display);font-weight:800;
+  font-family:var(--wordmark);font-weight:900;
   font-size:clamp(28px,3.5vw,52px);
   color:#fff;line-height:1.05;margin-bottom:20px;
 }
@@ -1227,8 +1226,18 @@ footer{
 <!-- Boot screen -->
 <div id="boot">
   <div class="boot-logo" id="boot-logo">
-    <div class="boot-mark"><span>K//</span></div>
-    <span class="boot-wordmark">koda<em>stack</em></span>
+    <div class="boot-mark">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="52" height="52">
+        <defs><clipPath id="kc-boot"><path d="M38 0L100 0L100 100L0 100L0 44L38 44Z"/></clipPath></defs>
+        <path d="M38 0L100 0L100 100L0 100L0 44L38 44Z" fill="#F7E115"/>
+        <g clip-path="url(#kc-boot)" fill="#0A192F">
+          <rect x="7" y="0" width="16" height="100"/>
+          <polygon points="23,41 23,57 100,-6 100,-22"/>
+          <polygon points="23,57 23,73 100,122 100,106"/>
+        </g>
+      </svg>
+    </div>
+    <span class="boot-wordmark">KODA<em>STACK</em></span>
   </div>
   <div class="boot-lines" id="boot-lines">
     <div class="boot-line" data-delay="0"><span class="bl-icon">▶</span>Inicializando kernel do sistema...</div>
@@ -1281,8 +1290,18 @@ footer{
   <div class="wrap">
     <div class="nav-wrap">
       <a href="#" class="logo">
-        <div class="logo-mark"><span>K//</span></div>
-        <span class="logo-name">koda<em>stack</em></span>
+        <div class="logo-mark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="36" height="36">
+            <defs><clipPath id="kc-nav"><path d="M38 0L100 0L100 100L0 100L0 44L38 44Z"/></clipPath></defs>
+            <path d="M38 0L100 0L100 100L0 100L0 44L38 44Z" fill="#F7E115"/>
+            <g clip-path="url(#kc-nav)" fill="#0A192F">
+              <rect x="7" y="0" width="16" height="100"/>
+              <polygon points="23,41 23,57 100,-6 100,-22"/>
+              <polygon points="23,57 23,73 100,122 100,106"/>
+            </g>
+          </svg>
+        </div>
+        <span class="logo-name">KODA<em>STACK</em></span>
       </a>
 
       <div class="status-pill">
@@ -1328,6 +1347,10 @@ footer{
   <canvas id="particle-canvas"></canvas>
   <div class="hero-grid"></div>
   <div class="scanline"></div>
+  <!-- Giant KODA watermark -->
+  <div style="position:absolute;bottom:-2%;left:50%;transform:translateX(-50%);width:100%;text-align:center;pointer-events:none;user-select:none;overflow:hidden;z-index:0">
+    <span style="font-family:var(--wordmark);font-weight:900;font-size:clamp(120px,22vw,280px);letter-spacing:.08em;color:rgba(247,225,21,0.025);line-height:1;display:block;white-space:nowrap">KODA</span>
+  </div>
 
   <div class="wrap hero-inner">
     <div class="hero-layout">
@@ -1645,7 +1668,7 @@ footer{
     <div class="port-header gsap-hidden">
       <div>
         <div class="stag"><div class="stag-line"></div><span class="stag-txt">portfólio selecionado</span></div>
-        <h2 style="font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,52px);color:#fff;line-height:1.05">
+        <h2 style="font-family:var(--wordmark);font-weight:900;font-size:clamp(28px,3.8vw,52px);color:#fff;line-height:1.05">
           Produtos que<br><span class="electric">fazem diferença</span>.
         </h2>
       </div>
@@ -1912,7 +1935,7 @@ footer{
     <div class="contact-grid">
       <div class="gsap-hidden">
         <div class="stag"><div class="stag-line"></div><span class="stag-txt">fale conosco</span></div>
-        <h2 style="font-family:var(--display);font-weight:800;font-size:clamp(28px,3.5vw,52px);color:#fff;line-height:1.05;margin-bottom:20px">
+        <h2 style="font-family:var(--wordmark);font-weight:900;font-size:clamp(28px,3.5vw,52px);color:#fff;line-height:1.05;margin-bottom:20px">
           Próximo projeto?<br><span class="electric">Vamos conversar.</span>
         </h2>
         <p class="contact-left" style="font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:36px;max-width:380px">
@@ -2045,17 +2068,17 @@ footer{
       <div class="foot-brand">
         <a href="#" class="logo">
           <div class="logo-mark">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="34" height="34">
-              <defs><clipPath id="kc"><path d="M19 0L60 0L60 60L0 60L0 25L19 25Z"/></clipPath></defs>
-              <path d="M19 0L60 0L60 60L0 60L0 25L19 25Z" fill="#F7E115"/>
-              <g clip-path="url(#kc)" fill="#0A192F">
-                <rect x="4" y="0" width="11" height="60"/>
-                <polygon points="15,22 15,35 60,2 60,-11"/>
-                <polygon points="15,35 15,48 60,72 60,59"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="38" height="38">
+              <defs><clipPath id="kc-foot"><path d="M38 0L100 0L100 100L0 100L0 44L38 44Z"/></clipPath></defs>
+              <path d="M38 0L100 0L100 100L0 100L0 44L38 44Z" fill="#F7E115"/>
+              <g clip-path="url(#kc-foot)" fill="#0A192F">
+                <rect x="7" y="0" width="16" height="100"/>
+                <polygon points="23,41 23,57 100,-6 100,-22"/>
+                <polygon points="23,57 23,73 100,122 100,106"/>
               </g>
             </svg>
           </div>
-          <span class="logo-name">koda<em>stack</em></span>
+          <span class="logo-name">KODA<em>STACK</em></span>
         </a>
         <p>Engenharia de software de alto impacto. Full stack, focado no futuro, comprometido com o seu resultado.</p>
         <div class="socials">
