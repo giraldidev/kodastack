@@ -1,0 +1,11 @@
+{
+  "buildCommand": null,
+  "outputDirectory": "static",
+  "framework": null,
+  "github": {
+    "deploymentEnabled": true
+  },
+  "env": {
+    "VERCEL_PREVIEW_FEEDBACK_ENABLED": "0"
+  }
+}
