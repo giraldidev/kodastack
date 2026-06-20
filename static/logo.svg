@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="22" fill="#0A192F"/>
+
+  <!-- Stack layers — bottom to top, each shifted up -->
+
+  <!-- Layer 3 (bottom) -->
+  <rect x="18" y="66" width="64" height="10" rx="5" fill="#112D55" stroke="#F7E115" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- Layer 2 (middle) -->
+  <rect x="18" y="52" width="64" height="10" rx="5" fill="#112D55" stroke="#F7E115" stroke-width="1.5" stroke-opacity="0.65"/>
+
+  <!-- Layer 1 (top) — full yellow -->
+  <rect x="18" y="38" width="64" height="10" rx="5" fill="#F7E115"/>
+
+  <!-- K letter on top layer -->
+  <text x="50" y="47.5" text-anchor="middle" dominant-baseline="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-weight="900" font-size="9" fill="#0A192F" letter-spacing="0.5">
+    KODA
+  </text>
+
+  <!-- Dot accent bottom right -->
+  <circle cx="76" cy="76" r="3.5" fill="#F7E115"/>
+</svg>

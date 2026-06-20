@@ -7,7 +7,7 @@
 <meta name="description" content="Agência de desenvolvimento full stack. Sistemas que escalam. Interfaces que impressionam. Código que performa."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
@@ -16,22 +16,23 @@
 ═══════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --c0:#020C18;
-  --c1:#050F1E;
-  --c2:#091628;
-  --c3:#0D1F38;
-  --c4:#132845;
-  --yellow:#F7E115;
-  --yellow2:#FFE135;
-  --cyan:#00D4FF;
-  --border:rgba(255,255,255,.06);
-  --border2:rgba(255,255,255,.1);
-  --text:#D4DCE8;
-  --text2:rgba(212,220,232,.5);
-  --text3:rgba(212,220,232,.25);
+  --c0:#080808;
+  --c1:#0F0F0F;
+  --c2:#171717;
+  --c3:#222222;
+  --c4:#2E2E2E;
+  --yellow:#FFFFFF;
+  --yellow2:#E0E0E0;
+  --cyan:#909090;
+  --border:rgba(255,255,255,.08);
+  --border2:rgba(255,255,255,.15);
+  --text:#F0F0F0;
+  --text2:rgba(240,240,240,.5);
+  --text3:rgba(240,240,240,.25);
   --mono:'JetBrains Mono',monospace;
   --sans:'Inter',sans-serif;
   --display:'Syne',sans-serif;
+  --wordmark:'Barlow Condensed','Syne',sans-serif;
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--sans);background:var(--c1);color:var(--text);overflow-x:hidden;cursor:none}
@@ -51,12 +52,10 @@ body.loading{overflow:hidden}
   opacity:0;
 }
 .boot-mark{
-  width:48px;height:48px;border-radius:10px;
-  background:var(--yellow);display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 40px rgba(247,225,21,.4);
+  display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 0 24px rgba(255,255,255,.5));
 }
-.boot-mark span{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--c0)}
-.boot-wordmark{font-family:var(--display);font-weight:800;font-size:22px;color:#fff}
+.boot-wordmark{font-family:var(--wordmark);font-weight:900;font-size:26px;color:#fff;letter-spacing:.04em;text-transform:uppercase}
 .boot-wordmark em{color:var(--yellow);font-style:normal}
 
 .boot-lines{
@@ -68,8 +67,8 @@ body.loading{overflow:hidden}
   color:rgba(255,255,255,.35);opacity:0;transform:translateX(-8px);
 }
 .boot-line .bl-icon{color:var(--yellow);flex-shrink:0}
-.boot-line.ok .bl-icon{color:#28C840}
-.boot-line.err .bl-icon{color:#FF5F57}
+.boot-line.ok .bl-icon{color:#888888}
+.boot-line.err .bl-icon{color:#888888}
 
 .boot-bar-wrap{width:380px;opacity:0}
 .boot-bar-label{
@@ -82,7 +81,7 @@ body.loading{overflow:hidden}
 }
 .boot-bar-fill{
   height:100%;width:0%;background:var(--yellow);border-radius:2px;
-  box-shadow:0 0 8px rgba(247,225,21,.6);
+  box-shadow:0 0 8px rgba(255,255,255,.6);
   transition:width .04s linear;
 }
 
@@ -91,9 +90,9 @@ body.loading{overflow:hidden}
 ═══════════════════════════════════════════ */
 #scroll-prog{
   position:fixed;top:0;left:0;height:2px;width:0%;
-  background:linear-gradient(90deg,var(--yellow),rgba(0,212,255,.8));
+  background:linear-gradient(90deg,var(--yellow),rgba(160,160,160,.8));
   z-index:9990;
-  box-shadow:0 0 8px rgba(247,225,21,.5);
+  box-shadow:0 0 8px rgba(255,255,255,.5);
   transition:width .05s linear;
 }
 
@@ -122,21 +121,21 @@ body.loading{overflow:hidden}
 }
 #cursor-ring{
   position:fixed;width:36px;height:36px;border-radius:50%;
-  border:1px solid rgba(247,225,21,.4);pointer-events:none;z-index:9998;
+  border:1px solid rgba(255,255,255,.4);pointer-events:none;z-index:9998;
   transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s,background .15s;
 }
 body:has(a:hover) #cursor-ring,
 body:has(button:hover) #cursor-ring{
-  width:52px;height:52px;border-color:rgba(247,225,21,.7);
-  background:rgba(247,225,21,.06);
+  width:52px;height:52px;border-color:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.06);
 }
 
 /* scrollbar */
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:var(--c0)}
-::-webkit-scrollbar-thumb{background:rgba(247,225,21,.25);border-radius:2px}
-::selection{background:rgba(247,225,21,.18);color:#fff}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:2px}
+::selection{background:rgba(255,255,255,.18);color:#fff}
 
 /* ═══════════════════════════════════════════
    NOISE TEXTURE
@@ -168,7 +167,7 @@ body::after{
 .gb{position:relative}
 .gb::before{
   content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
-  background:linear-gradient(135deg,rgba(247,225,21,.5),rgba(0,212,255,.1),rgba(247,225,21,.05));
+  background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(160,160,160,.1),rgba(255,255,255,.05));
   -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
   -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
 }
@@ -191,7 +190,7 @@ body::after{
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
-@keyframes glow-pulse{0%,100%{box-shadow:0 0 20px rgba(247,225,21,.2),0 0 40px rgba(247,225,21,.08)}50%{box-shadow:0 0 40px rgba(247,225,21,.5),0 0 80px rgba(247,225,21,.2)}}
+@keyframes glow-pulse{0%,100%{box-shadow:0 0 20px rgba(255,255,255,.2),0 0 40px rgba(255,255,255,.08)}50%{box-shadow:0 0 40px rgba(255,255,255,.5),0 0 80px rgba(255,255,255,.2)}}
 @keyframes glitch-1{0%,100%{clip-path:inset(0 0 95% 0)}20%{clip-path:inset(15% 0 75% 0)}40%{clip-path:inset(50% 0 30% 0)}60%{clip-path:inset(80% 0 5% 0)}}
 @keyframes glitch-2{0%,100%{clip-path:inset(0 0 95% 0)}20%{clip-path:inset(70% 0 10% 0)}40%{clip-path:inset(30% 0 55% 0)}60%{clip-path:inset(5% 0 85% 0)}}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -221,31 +220,22 @@ body::after{
 /* Logo */
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{
-  width:34px;height:34px;border-radius:8px;
-  background:var(--yellow);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 20px rgba(247,225,21,.35);
-  transition:box-shadow .3s,transform .3s;
-  position:relative;overflow:hidden;
+  transition:filter .3s,transform .3s;
 }
-.logo-mark::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.25) 0%,transparent 60%);
-}
-.logo:hover .logo-mark{box-shadow:0 0 35px rgba(247,225,21,.6);transform:rotate(-3deg)}
-.logo-mark span{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--c0);position:relative;z-index:1}
-.logo-name{font-family:var(--display);font-weight:800;font-size:17px;color:#fff;letter-spacing:-.01em}
+.logo:hover .logo-mark{filter:drop-shadow(0 0 12px rgba(255,255,255,.8));transform:rotate(-4deg)}
+.logo-name{font-family:var(--wordmark);font-weight:900;font-size:20px;color:#fff;letter-spacing:.06em;text-transform:uppercase}
 .logo-name em{color:var(--yellow);font-style:normal}
 
 /* Status pill */
 .status-pill{
   display:flex;align-items:center;gap:6px;
-  font-family:var(--mono);font-size:10px;color:rgba(0,212,255,.8);
-  background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
+  font-family:var(--mono);font-size:10px;color:rgba(160,160,160,.8);
+  background:rgba(160,160,160,.06);border:1px solid rgba(160,160,160,.15);
   padding:4px 10px;border-radius:999px;
   animation:data-flicker 8s ease-in-out infinite;
 }
-.status-dot{width:5px;height:5px;border-radius:50%;background:#00D4FF;animation:blink 1.5s ease-in-out infinite}
+.status-dot{width:5px;height:5px;border-radius:50%;background:#AAAAAA;animation:blink 1.5s ease-in-out infinite}
 
 /* Nav links */
 .nav-links{display:flex;align-items:center;gap:28px}
@@ -275,7 +265,7 @@ body::after{
   background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.3) 50%,transparent 100%);
   transform:translateX(-100%);transition:transform .4s;
 }
-.nav-cta:hover{box-shadow:0 0 30px rgba(247,225,21,.5);transform:translateY(-1px)}
+.nav-cta:hover{box-shadow:0 0 30px rgba(255,255,255,.5);transform:translateY(-1px)}
 .nav-cta:hover::before{transform:translateX(100%)}
 
 /* Hamburger */
@@ -318,8 +308,8 @@ body::after{
 }
 .hero-grid::before{
   background:
-    linear-gradient(rgba(247,225,21,.015) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(247,225,21,.015) 1px,transparent 1px);
+    linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
   background-size:80px 80px;
 }
 .hero-grid::after{
@@ -332,7 +322,7 @@ body::after{
 }
 .scanline::after{
   content:'';position:absolute;left:0;right:0;height:2px;
-  background:linear-gradient(to right,transparent,rgba(0,212,255,.04),transparent);
+  background:linear-gradient(to right,transparent,rgba(160,160,160,.04),transparent);
   animation:scanline 8s linear infinite;top:0;
 }
 
@@ -354,16 +344,16 @@ body::after{
   opacity:0;
 }
 .sys-label .sys-tag{
-  background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);
+  background:rgba(160,160,160,.08);border:1px solid rgba(160,160,160,.2);
   padding:3px 10px;border-radius:4px;
 }
 .sys-label .sys-ver{color:var(--text3)}
 
 /* Glitch heading */
 .hero-h1{
-  font-family:var(--display);font-weight:800;
-  font-size:clamp(40px,5.5vw,76px);
-  line-height:.96;letter-spacing:-.03em;
+  font-family:var(--wordmark);font-weight:900;
+  font-size:clamp(48px,6.5vw,90px);
+  line-height:.92;letter-spacing:.01em;
   color:#fff;margin-bottom:28px;
   position:relative;
   opacity:0;
@@ -385,7 +375,7 @@ body::after{
   animation-delay:.5s;
 }
 .hero-h1 .glitch::after{
-  left:-2px;text-shadow:2px 0 rgba(247,225,21,.6);
+  left:-2px;text-shadow:2px 0 rgba(255,255,255,.6);
   animation:glitch-2 4s infinite linear alternate-reverse;
   animation-delay:1s;
 }
@@ -450,9 +440,9 @@ body::after{
 
 .terminal{
   background:#030D1A;
-  border:1px solid rgba(247,225,21,.15);
+  border:1px solid rgba(255,255,255,.15);
   border-radius:12px;overflow:hidden;
-  box-shadow:0 0 60px rgba(0,0,0,.6),0 0 0 1px rgba(247,225,21,.05);
+  box-shadow:0 0 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.05);
 }
 .term-bar{
   display:flex;align-items:center;gap:8px;
@@ -461,9 +451,9 @@ body::after{
 }
 .term-dots{display:flex;gap:5px}
 .term-dots span{width:10px;height:10px;border-radius:50%}
-.term-dots span:nth-child(1){background:#FF5F57}
+.term-dots span:nth-child(1){background:#555555}
 .term-dots span:nth-child(2){background:#FEBC2E}
-.term-dots span:nth-child(3){background:#28C840}
+.term-dots span:nth-child(3){background:#888888}
 .term-title{font-family:var(--mono);font-size:11px;color:var(--text3);margin:0 auto}
 
 .term-body{padding:18px 20px;font-family:var(--mono);font-size:12px;line-height:1.9;min-height:200px}
@@ -471,7 +461,7 @@ body::after{
 .t-prompt{color:var(--yellow)}
 .t-cmd{color:#e8eaf0}
 .t-out{color:var(--text2);padding-left:20px}
-.t-ok{color:#28C840}
+.t-ok{color:#888888}
 .t-cyan{color:var(--cyan)}
 .t-dim{color:var(--text3)}
 .t-cursor{display:inline-block;width:7px;height:13px;background:var(--yellow);vertical-align:middle;animation:blink .8s step-end infinite}
@@ -493,7 +483,7 @@ body::after{
   background:rgba(255,255,255,.03);
   cursor:none;transition:border-color .2s,background .2s,transform .2s;
 }
-.stack-chip:hover{border-color:rgba(247,225,21,.3);background:rgba(247,225,21,.05);transform:translateY(-2px)}
+.stack-chip:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.05);transform:translateY(-2px)}
 .chip-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 
 /* Uptime bar */
@@ -508,7 +498,7 @@ body::after{
   transition:background .2s;
 }
 .uptime-seg.down{background:rgba(255,95,87,.3)}
-.uptime-val{color:#28C840;flex-shrink:0}
+.uptime-val{color:#888888;flex-shrink:0}
 
 /* ═══════════════════════════════════════════
    WHATSAPP BUTTON
@@ -538,14 +528,14 @@ body::after{
   width:54px;height:54px;border-radius:50%;
   background:#25D366;
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 0 0 rgba(37,211,102,.4);
+  box-shadow:0 0 0 0 rgba(255,255,255,.3);
   animation:wa-pulse 2.5s ease-in-out infinite;
   transition:transform .2s,box-shadow .2s;
   flex-shrink:0;
 }
 #wa-icon:hover{transform:scale(1.1);box-shadow:0 0 24px rgba(37,211,102,.5)}
 @keyframes wa-pulse{
-  0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,.3)}
   50%{box-shadow:0 0 0 12px rgba(37,211,102,0)}
   100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
 }
@@ -554,7 +544,7 @@ body::after{
 #wa-badge{
   position:absolute;top:-2px;right:-2px;
   width:16px;height:16px;border-radius:50%;
-  background:#FF5F57;border:2px solid var(--c1);
+  background:#555555;border:2px solid var(--c1);
   font-size:9px;font-weight:700;color:#fff;
   display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);
@@ -618,7 +608,7 @@ body::after{
 /* Section transition (horizontal rule with glow) */
 .sec-divider{
   position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent 0%,rgba(247,225,21,.2) 30%,rgba(0,212,255,.12) 60%,transparent 100%);
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.2) 30%,rgba(160,160,160,.12) 60%,transparent 100%);
 }
 
 /* Parallax layer */
@@ -634,13 +624,13 @@ body::after{
 }
 .about-top-line{
   position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(247,225,21,.25),rgba(0,212,255,.15),transparent);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),rgba(160,160,160,.15),transparent);
 }
 
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 
 .manifesto{
-  font-family:var(--display);font-weight:700;
+  font-family:var(--wordmark);font-weight:900;
   font-size:clamp(28px,3.2vw,44px);
   line-height:1.1;color:#fff;
   margin-bottom:32px;
@@ -650,7 +640,7 @@ body::after{
 }
 .manifesto .strike{
   position:relative;color:var(--text3);
-  text-decoration:line-through;text-decoration-color:rgba(247,225,21,.4);
+  text-decoration:line-through;text-decoration-color:rgba(255,255,255,.4);
 }
 
 .about-body p{
@@ -661,9 +651,9 @@ body::after{
 .about-tag{
   font-family:var(--mono);font-size:11px;
   padding:5px 12px;border-radius:4px;
-  border:1px solid rgba(247,225,21,.2);
-  color:rgba(247,225,21,.7);
-  background:rgba(247,225,21,.05);
+  border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.05);
 }
 
 /* Right: code aesthetic counters */
@@ -697,7 +687,7 @@ body::after{
   font-family:var(--mono);font-weight:700;font-size:56px;
   color:var(--yellow);line-height:1;letter-spacing:-.03em;
 }
-.big-suffix{font-family:var(--mono);font-size:24px;color:rgba(247,225,21,.5);padding-bottom:8px}
+.big-suffix{font-family:var(--mono);font-size:24px;color:rgba(255,255,255,.5);padding-bottom:8px}
 .big-label{font-size:13px;color:var(--text3);padding-bottom:10px}
 
 /* ═══════════════════════════════════════════
@@ -712,7 +702,7 @@ body::after{
 .services-header{display:flex;flex-direction:column;gap:0;margin-bottom:64px}
 .services-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
 .services-head-row h2{
-  font-family:var(--display);font-weight:800;
+  font-family:var(--wordmark);font-weight:900;
   font-size:clamp(28px,3.8vw,52px);
   color:#fff;line-height:1.05;
   max-width:520px;
@@ -776,7 +766,7 @@ body::after{
   display:flex;align-items:center;justify-content:center;
   transition:border-color .2s,background .2s,transform .2s;
 }
-.svc-card:hover .svc-arrow{border-color:var(--yellow);background:rgba(247,225,21,.1);transform:rotate(45deg)}
+.svc-card:hover .svc-arrow{border-color:var(--yellow);background:rgba(255,255,255,.1);transform:rotate(45deg)}
 
 /* Hover glow */
 .svc-glow{
@@ -798,7 +788,7 @@ body::after{
   display:flex;align-items:flex-end;justify-content:space-between;
   gap:32px;margin-bottom:56px;
 }
-.port-header h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,52px);color:#fff;line-height:1.05}
+.port-header h2{font-family:var(--wordmark);font-weight:900;font-size:clamp(28px,3.8vw,52px);color:#fff;line-height:1.05}
 .port-more{
   display:inline-flex;align-items:center;gap:6px;
   font-family:var(--mono);font-size:12px;color:var(--text3);
@@ -829,7 +819,7 @@ body::after{
   text-transform:uppercase;color:var(--text3);margin-bottom:8px;
 }
 .port-name{
-  font-family:var(--display);font-weight:800;font-size:28px;
+  font-family:var(--wordmark);font-weight:900;font-size:28px;
   color:#fff;margin-bottom:12px;line-height:1;
 }
 .port-card.featured .port-name{font-size:38px}
@@ -886,7 +876,7 @@ body::after{
 .proc-layout{display:grid;grid-template-columns:340px 1fr;gap:80px;align-items:start}
 
 .proc-left h2{
-  font-family:var(--display);font-weight:800;
+  font-family:var(--wordmark);font-weight:900;
   font-size:clamp(28px,3.2vw,44px);
   color:#fff;line-height:1.1;margin-bottom:20px;
 }
@@ -904,8 +894,8 @@ body::after{
   content:'';position:absolute;left:28px;top:100%;
   width:1px;height:100%;background:var(--border);
 }
-.phase-item.active{background:rgba(247,225,21,.06)}
-.phase-item.active .ph-num{color:var(--yellow);border-color:rgba(247,225,21,.4)}
+.phase-item.active{background:rgba(255,255,255,.06)}
+.phase-item.active .ph-num{color:var(--yellow);border-color:rgba(255,255,255,.4)}
 .phase-item.active .ph-lbl{color:#fff}
 .ph-num{
   width:32px;height:32px;border-radius:50%;
@@ -928,14 +918,14 @@ body::after{
   cursor:none;
 }
 .proc-step:hover{border-color:rgba(255,255,255,.1);background:rgba(9,22,40,.8)}
-.proc-step.active{border-color:rgba(247,225,21,.25);background:rgba(3,13,26,.8)}
+.proc-step.active{border-color:rgba(255,255,255,.25);background:rgba(3,13,26,.8)}
 
 .ps-num{
   font-family:var(--mono);font-weight:700;font-size:32px;
   color:rgba(255,255,255,.06);line-height:1;padding-top:4px;
   transition:color .3s;
 }
-.proc-step.active .ps-num{color:rgba(247,225,21,.15)}
+.proc-step.active .ps-num{color:rgba(255,255,255,.15)}
 
 .ps-content{}
 .ps-title{font-family:var(--display);font-weight:700;font-size:18px;color:#fff;margin-bottom:8px}
@@ -945,7 +935,7 @@ body::after{
   font-family:var(--mono);font-size:10px;
   padding:3px 8px;border-radius:3px;border:1px solid var(--border2);color:var(--text3);
 }
-.proc-step.active .ps-tag{border-color:rgba(247,225,21,.2);color:rgba(247,225,21,.6)}
+.proc-step.active .ps-tag{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.6)}
 
 .ps-duration{
   font-family:var(--mono);font-size:11px;color:var(--text3);
@@ -954,7 +944,7 @@ body::after{
   padding:4px 10px;align-self:flex-start;
   transition:border-color .3s,color .3s;
 }
-.proc-step.active .ps-duration{border-color:rgba(247,225,21,.25);color:rgba(247,225,21,.6)}
+.proc-step.active .ps-duration{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.6)}
 
 /* ═══════════════════════════════════════════
    CONTACT
@@ -967,14 +957,14 @@ body::after{
 .contact-glow{
   position:absolute;bottom:-100px;left:50%;transform:translateX(-50%);
   width:800px;height:400px;border-radius:50%;
-  background:radial-gradient(ellipse,rgba(247,225,21,.06) 0%,transparent 70%);
+  background:radial-gradient(ellipse,rgba(255,255,255,.06) 0%,transparent 70%);
   pointer-events:none;
 }
 
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 
 .contact-left h2{
-  font-family:var(--display);font-weight:800;
+  font-family:var(--wordmark);font-weight:900;
   font-size:clamp(28px,3.5vw,52px);
   color:#fff;line-height:1.05;margin-bottom:20px;
 }
@@ -990,7 +980,7 @@ body::after{
 .cmethod:hover{border-color:rgba(255,255,255,.1)}
 .cmethod-icon{
   width:40px;height:40px;border-radius:8px;
-  background:rgba(247,225,21,.08);border:1px solid rgba(247,225,21,.15);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
   display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
 }
 .cmethod-label{font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:3px}
@@ -1007,7 +997,7 @@ body::after{
 }
 .form-header-dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);animation:blink 2s ease-in-out infinite}
 .form-header span{font-family:var(--mono);font-size:11px;color:var(--text3)}
-.form-header .conn{margin-left:auto;font-family:var(--mono);font-size:10px;color:#28C840}
+.form-header .conn{margin-left:auto;font-family:var(--mono);font-size:10px;color:#888888}
 
 .cform{padding:28px 24px;display:flex;flex-direction:column;gap:16px}
 
@@ -1022,13 +1012,13 @@ body::after{
 }
 .finput::placeholder,.ftextarea::placeholder{color:var(--text3)}
 .finput:focus,.fselect:focus,.ftextarea:focus{
-  border-color:rgba(247,225,21,.4);background:rgba(247,225,21,.03);
+  border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.03);
 }
 .fselect{cursor:none;-webkit-appearance:none;appearance:none;
   background-image:url("data:image/svg+xml,%3Csvg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(212,220,232,0.3)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;
 }
-.fselect option{background:#091628}
+.fselect option{background:#171717}
 .ftextarea{resize:none}
 
 .fsub{
@@ -1040,7 +1030,7 @@ body::after{
   position:relative;overflow:hidden;
   transition:box-shadow .3s,transform .2s;
 }
-.fsub:hover{box-shadow:0 0 30px rgba(247,225,21,.35);transform:translateY(-1px)}
+.fsub:hover{box-shadow:0 0 30px rgba(255,255,255,.35);transform:translateY(-1px)}
 .fsub .shine{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-100%);transition:transform .45s}
 .fsub:hover .shine{transform:translateX(100%)}
 .fsub .flbl{position:relative;z-index:1;display:flex;align-items:center;gap:8px}
@@ -1049,7 +1039,7 @@ body::after{
   display:none;flex-direction:column;align-items:center;justify-content:center;
   min-height:400px;text-align:center;gap:16px;padding:32px;
 }
-.fsi{width:64px;height:64px;border-radius:50%;background:rgba(247,225,21,.1);border:1px solid rgba(247,225,21,.3);display:flex;align-items:center;justify-content:center}
+.fsi{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center}
 .fsi svg{stroke:var(--yellow);width:28px;height:28px}
 .form-success-state h3{font-family:var(--display);font-size:22px;font-weight:700;color:#fff}
 .form-success-state p{font-size:14px;color:var(--text2);max-width:260px}
@@ -1092,6 +1082,8 @@ footer{
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
+
+/* ── Tablet landscape ──────────────────── */
 @media(max-width:1100px){
   .hero-layout{grid-template-columns:1fr;gap:40px}
   .hero-right{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -1099,26 +1091,133 @@ footer{
   .svc-grid{grid-template-columns:1fr 1fr}
   .proc-layout{grid-template-columns:1fr;gap:40px}
   .proc-left{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .circuit-svg{opacity:.15}
 }
+
+/* ── Tablet portrait ───────────────────── */
 @media(max-width:900px){
   .port-grid{grid-template-columns:1fr}
   .port-card.featured{grid-column:1;grid-row:auto}
   .foot-grid{grid-template-columns:1fr 1fr}
   .services-head-row{flex-direction:column;gap:16px}
   .contact-grid{grid-template-columns:1fr;gap:48px}
+  .circuit-svg{display:none}
+  .wrap{padding:0 24px}
 }
+
+/* ── Mobile ────────────────────────────── */
 @media(max-width:768px){
+  /* Nav */
   .nav-links,.nav-cta{display:none}
   .burger{display:flex}
   .mobile-menu{display:flex}
-  .svc-grid{grid-template-columns:1fr}
-  .hero-right{grid-template-columns:1fr}
-  .proc-left{grid-template-columns:1fr}
-  .foot-grid{grid-template-columns:1fr}
-  .about-grid{gap:32px}
-  .fg-row{grid-template-columns:1fr}
-  .hero-metrics{flex-wrap:wrap}
+  .nav-inner{padding:0 20px;height:60px}
+  .logo-mark svg{width:30px;height:30px}
+
+  /* Global spacing */
+  .wrap{padding:0 20px}
+  section{padding:72px 0}
+
+  /* Hero */
+  .hero-inner{padding:100px 0 56px}
+  .hero-h1{font-size:clamp(36px,10vw,56px);line-height:1.05}
+  .hero-sub{font-size:14px;line-height:1.65}
+  .hero-actions{flex-direction:column;gap:12px}
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost{width:100%;justify-content:center;padding:16px 24px;font-size:14px}
+  .hero-metrics{flex-wrap:wrap;gap:12px}
+  .hero-metric{flex:1 1 calc(50% - 6px);min-width:0}
+  .hero-right{grid-template-columns:1fr;gap:12px}
+  .hero-right>*:nth-child(n+3){display:none}
+
+  /* About */
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .about-left h2{font-size:clamp(28px,8vw,42px)}
+  .manifesto{font-size:clamp(24px,7vw,36px) !important}
+
+  /* Services */
+  .svc-grid{grid-template-columns:1fr;gap:16px}
+  .svc-card{padding:28px 20px;margin-top:0 !important}
+  .svc-title{font-size:18px}
+  .services-head-row h2{font-size:clamp(28px,8vw,42px)}
+
+  /* Portfolio */
+  .port-grid{grid-template-columns:1fr}
+  .port-card{padding:24px 20px}
+  .port-card.featured .port-name{font-size:clamp(22px,6vw,32px)}
   .port-header{flex-direction:column;align-items:flex-start;gap:16px}
+
+  /* Process */
+  .proc-layout{grid-template-columns:1fr;gap:32px}
+  .proc-left{grid-template-columns:1fr;gap:16px}
+  .proc-step{padding:20px 16px}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .contact-left h2{font-size:clamp(28px,8vw,42px)}
+  .cform{padding:24px 16px;gap:16px}
+  .finput,.fselect,.ftextarea{font-size:16px;padding:14px 16px} /* 16px prevents iOS zoom */
+  .flabel{font-size:13px}
+  .fg-row{grid-template-columns:1fr}
+  .fsub{padding:16px;font-size:14px}
+  #wa-form-btn{padding:16px;font-size:14px}
+  .cmethod{padding:14px 16px}
+  .cmethod-icon{width:40px;height:40px;font-size:16px}
+  .cmethod-val{font-size:13px}
+
+  /* Footer */
+  .foot-grid{grid-template-columns:1fr;gap:32px}
+  .foot-brand p{max-width:100%}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px;text-align:left}
+  .foot-links{flex-wrap:wrap;gap:12px}
+
+  /* WhatsApp button — safe area for notch phones */
+  #wa-btn{
+    bottom:max(20px, env(safe-area-inset-bottom, 20px));
+    right:20px;
+    width:52px;height:52px
+  }
+  #wa-icon{width:26px;height:26px}
+  #wa-label{display:none}
+
+  /* Live feed — smaller on mobile */
+  #live-feed{left:12px;bottom:12px;max-width:240px}
+
+  /* Section titles global */
+  h2{font-size:clamp(26px,7.5vw,42px) !important}
+
+  /* Ticker */
+  .ticker-track{animation-duration:20s}
+}
+
+/* ── Small phones (< 480px) ────────────── */
+@media(max-width:480px){
+  .wrap{padding:0 16px}
+  section{padding:56px 0}
+  .hero-inner{padding:88px 0 48px}
+  .hero-h1{font-size:clamp(32px,9.5vw,48px)}
+  .hero-metric{flex:1 1 100%}
+  .svc-card{padding:24px 16px}
+  .port-card{padding:20px 16px}
+  .cform{padding:20px 14px}
+  .about-val{font-size:clamp(28px,9vw,42px)}
+  .stag{margin-bottom:12px}
+  .foot-grid{gap:24px}
+  #live-feed{display:none} /* Hidden on very small screens */
+  .boot-logo{font-size:clamp(22px,7vw,32px)}
+}
+
+/* ── Landscape orientation on phones ──── */
+@media(max-width:768px) and (orientation:landscape){
+  .hero-inner{padding:80px 0 40px}
+  .mobile-menu{max-height:80vh;overflow-y:auto}
+}
+
+/* ── Reduced motion ────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .ticker-track{animation:none}
+  #particle-canvas{display:none}
 }
 </style>
 </head>
@@ -1127,8 +1226,12 @@ footer{
 <!-- Boot screen -->
 <div id="boot">
   <div class="boot-logo" id="boot-logo">
-    <div class="boot-mark"><span>K//</span></div>
-    <span class="boot-wordmark">koda<em>stack</em></span>
+    <div class="boot-mark">
+      <div style="background:#fff;border-radius:10px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 32px rgba(255,255,255,.2)">
+        <img src="https://i.imgur.com/Z8J57bO.jpeg" alt="Koda" style="width:46px;height:46px;object-fit:contain"/>
+      </div>
+    </div>
+    <span class="boot-wordmark">KODA<em>STACK</em></span>
   </div>
   <div class="boot-lines" id="boot-lines">
     <div class="boot-line" data-delay="0"><span class="bl-icon">▶</span>Inicializando kernel do sistema...</div>
@@ -1181,14 +1284,18 @@ footer{
   <div class="wrap">
     <div class="nav-wrap">
       <a href="#" class="logo">
-        <div class="logo-mark"><span>K//</span></div>
-        <span class="logo-name">koda<em>stack</em></span>
+        <div class="logo-mark">
+          <div style="background:#fff;border-radius:7px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <img src="https://i.imgur.com/Z8J57bO.jpeg" alt="Koda" style="width:30px;height:30px;object-fit:contain"/>
+          </div>
+        </div>
+        <span class="logo-name">KODA<em>STACK</em></span>
       </a>
 
       <div class="status-pill">
         <span class="status-dot"></span>
         <span>sistemas online</span>
-        <span style="color:rgba(0,212,255,.4)">·</span>
+        <span style="color:rgba(160,160,160,.4)">·</span>
         <span>uptime 99.9%</span>
       </div>
 
@@ -1228,6 +1335,10 @@ footer{
   <canvas id="particle-canvas"></canvas>
   <div class="hero-grid"></div>
   <div class="scanline"></div>
+  <!-- Giant KODA watermark -->
+  <div style="position:absolute;bottom:-2%;left:50%;transform:translateX(-50%);width:100%;text-align:center;pointer-events:none;user-select:none;overflow:hidden;z-index:0">
+    <span style="font-family:var(--wordmark);font-weight:900;font-size:clamp(120px,22vw,280px);letter-spacing:.08em;color:rgba(255,255,255,0.04);line-height:1;display:block;white-space:nowrap">KODA</span>
+  </div>
 
   <div class="wrap hero-inner">
     <div class="hero-layout">
@@ -1251,19 +1362,19 @@ footer{
 
         <div class="hero-metrics gsap-hidden" id="hero-metrics">
           <div class="metric" style="background:rgba(2,12,24,.7)">
-            <span class="metric-val mono" data-count="50" data-suffix="+">0+</span>
+            <span class="metric-val mono" data-count="10" data-suffix="+">0+</span>
             <span class="metric-lbl">projetos</span>
           </div>
           <div class="metric" style="background:rgba(2,12,24,.7)">
-            <span class="metric-val mono" data-count="98" data-suffix="%">0%</span>
-            <span class="metric-lbl">satisfação</span>
+            <span class="metric-val mono" data-count="24" data-suffix="h">0h</span>
+            <span class="metric-lbl">1ª resposta</span>
           </div>
           <div class="metric" style="background:rgba(2,12,24,.7)">
-            <span class="metric-val mono" data-count="7" data-suffix="yr">0yr</span>
+            <span class="metric-val mono" data-count="2" data-suffix="yr">0yr</span>
             <span class="metric-lbl">no mercado</span>
           </div>
           <div class="metric" style="background:rgba(2,12,24,.7);border-right:none">
-            <span class="metric-val mono" data-count="2.4" data-suffix="M">0M</span>
+            <span class="metric-val mono" data-count="1000" data-suffix="+">0+</span>
             <span class="metric-lbl">usuários servidos</span>
           </div>
         </div>
@@ -1304,10 +1415,10 @@ footer{
         <div class="stack-panel gsap-hidden" id="stack-panel">
           <div class="stack-panel-title mono">// STACK DE TECNOLOGIAS</div>
           <div class="stack-logos">
-            <div class="stack-chip"><span class="chip-dot" style="background:#61DAFB"></span>React</div>
+            <div class="stack-chip"><span class="chip-dot" style="background:#FFFFFF"></span>React</div>
             <div class="stack-chip"><span class="chip-dot" style="background:#3178C6"></span>TypeScript</div>
             <div class="stack-chip"><span class="chip-dot" style="background:#fff"></span>Next.js</div>
-            <div class="stack-chip"><span class="chip-dot" style="background:#68A063"></span>Node.js</div>
+            <div class="stack-chip"><span class="chip-dot" style="background:#888888"></span>Node.js</div>
             <div class="stack-chip"><span class="chip-dot" style="background:#FF9900"></span>AWS</div>
             <div class="stack-chip"><span class="chip-dot" style="background:#4479A1"></span>PostgreSQL</div>
             <div class="stack-chip"><span class="chip-dot" style="background:#DC382D"></span>Redis</div>
@@ -1363,22 +1474,22 @@ footer{
           <span class="stag-txt">sobre nós</span>
         </div>
         <p class="manifesto">
-          Chega de agências que entregam
-          <span class="strike">templates</span>.
-          Nós construímos
-          <span class="accent">engenharia de verdade</span>.
+          Você tem um problema.
+          A gente entende a
+          <span class="accent">dor por trás dele</span>
+          e constrói a solução certa.
         </p>
         <div class="about-body">
-          <p>A Koda Stack é um coletivo de engenheiros sêniores obcecados por performance, arquitetura limpa e código que resolve problemas de negócio reais. Sem floreio, sem templates, sem mediocridade.</p>
-          <p>Em 7 anos de operação, passamos por cada cenário possível — startups que precisam escalar amanhã, corporações que precisam modernizar sistemas legados e produtos que precisam de zero downtime 24/7.</p>
+          <p>A Koda Stack nasceu da vontade de fazer software diferente — com atenção real ao problema do cliente, não apenas à entrega de código. Cada projeto começa com uma conversa honesta sobre o que você precisa de verdade.</p>
+          <p>Somos especializados em landing pages que convertem, sistemas empresariais sob medida e consultoria técnica para quem quer tomar decisões com clareza antes de investir.</p>
         </div>
         <div class="about-tags">
-          <span class="about-tag">clean architecture</span>
-          <span class="about-tag">test-driven</span>
-          <span class="about-tag">zero downtime deploys</span>
-          <span class="about-tag">observability first</span>
+          <span class="about-tag">landing pages</span>
+          <span class="about-tag">sistemas empresariais</span>
+          <span class="about-tag">consultoria técnica</span>
+          <span class="about-tag">next.js</span>
           <span class="about-tag">mobile-first</span>
-          <span class="about-tag">core web vitals 100</span>
+          <span class="about-tag">entrega rápida</span>
         </div>
       </div>
 
@@ -1391,35 +1502,33 @@ footer{
           </div>
           <div class="code-block-body">
             <div class="code-line"><span class="ln">1</span><span class="kw">const</span> <span class="prop"> kodaStack</span> <span class="op">=</span> <span class="op">{</span></div>
-            <div class="code-line"><span class="ln">2</span><span style="padding-left:16px"><span class="prop">projetos</span><span class="op">:</span> <span class="num-val" data-count="50" data-suffix="">0</span><span class="op">,</span></span></div>
-            <div class="code-line"><span class="ln">3</span><span style="padding-left:16px"><span class="prop">satisfacao</span><span class="op">:</span> <span class="str">"<span data-count="98" data-suffix="%">0%</span>"</span><span class="op">,</span></span></div>
-            <div class="code-line"><span class="ln">4</span><span style="padding-left:16px"><span class="prop">usuarios</span><span class="op">:</span> <span class="str">"<span data-count="2.4" data-suffix="M+">0M+</span>"</span><span class="op">,</span></span></div>
-            <div class="code-line"><span class="ln">5</span><span style="padding-left:16px"><span class="prop">anos</span><span class="op">:</span> <span class="num-val" data-count="7" data-suffix="">0</span><span class="op">,</span></span></div>
-            <div class="code-line"><span class="ln">6</span><span style="padding-left:16px"><span class="cm">// e contando...</span></span></div>
+            <div class="code-line"><span class="ln">2</span><span style="padding-left:16px"><span class="prop">atuacao</span><span class="op">:</span> <span class="str">"São Paulo, Brasil"</span><span class="op">,</span></span></div>
+            <div class="code-line"><span class="ln">3</span><span style="padding-left:16px"><span class="prop">fundacao</span><span class="op">:</span> <span class="num-val">2023</span><span class="op">,</span></span></div>
+            <div class="code-line"><span class="ln">4</span><span style="padding-left:16px"><span class="prop">foco</span><span class="op">:</span> <span class="str">"resultado do cliente"</span><span class="op">,</span></span></div>
+            <div class="code-line"><span class="ln">5</span><span style="padding-left:16px"><span class="prop">atendimento</span><span class="op">:</span> <span class="str">"24h de resposta"</span><span class="op">,</span></span></div>
+            <div class="code-line"><span class="ln">6</span><span style="padding-left:16px"><span class="cm">// vamos conversar?</span></span></div>
             <div class="code-line"><span class="ln">7</span><span class="op">}</span></div>
           </div>
         </div>
 
-        <!-- Big stat -->
+        <!-- Process highlight -->
         <div class="big-stat">
-          <span class="big-num" id="big-num">0</span>
-          <span class="big-suffix">+</span>
-          <span class="big-label">projetos<br>entregues</span>
+          <span class="big-num" style="font-size:clamp(32px,5vw,52px);line-height:1">24h</span>
+          <span class="big-label" style="margin-top:8px">primeira resposta<br>garantida</span>
         </div>
 
-        <!-- Testimonial code block -->
+        <!-- How it works block -->
         <div class="code-block">
           <div class="code-block-header">
-            <span class="file">testimonial.json</span>
-            <span style="color:#28C840">✓ verified</span>
+            <span class="file">como_funciona.md</span>
+            <span style="color:#888888">✓ simples</span>
           </div>
           <div class="code-block-body" style="font-size:12px">
-            <div class="code-line"><span class="ln">1</span><span class="op">{</span></div>
-            <div class="code-line"><span class="ln">2</span><span style="padding-left:16px"><span class="prop">"author"</span><span class="op">:</span> <span class="str">"Marcos Costa, CEO FinTech Pulse"</span><span class="op">,</span></span></div>
-            <div class="code-line"><span class="ln">3</span><span style="padding-left:16px"><span class="prop">"rating"</span><span class="op">:</span> <span class="num-val">5</span><span class="op">,</span></span></div>
-            <div class="code-line"><span class="ln">4</span><span style="padding-left:16px"><span class="prop">"review"</span><span class="op">:</span> <span class="str">"Não apenas entregaram o sistema</span></span></div>
-            <div class="code-line"><span class="ln">5</span><span style="padding-left:32px"><span class="str">— nos ajudaram a pensar o produto."</span></span></div>
-            <div class="code-line"><span class="ln">6</span><span class="op">}</span></div>
+            <div class="code-line"><span class="ln">1</span><span class="cm">// 01 — você nos conta o problema</span></div>
+            <div class="code-line"><span class="ln">2</span><span class="cm">// 02 — a gente entende a dor real</span></div>
+            <div class="code-line"><span class="ln">3</span><span class="cm">// 03 — propomos a solução ideal</span></div>
+            <div class="code-line"><span class="ln">4</span><span class="cm">// 04 — construímos e entregamos</span></div>
+            <div class="code-line"><span class="ln">5</span><span class="cm">// 05 — suporte contínuo pós-entrega</span></div>
           </div>
         </div>
       </div>
@@ -1448,17 +1557,17 @@ footer{
 
       <!-- Service 1 — Landing Pages -->
       <div class="svc-card gsap-hidden">
-        <div class="svc-glow" style="background:radial-gradient(circle,rgba(247,225,21,.15) 0%,transparent 70%)"></div>
-        <div class="svc-idx mono">01 <span style="color:rgba(247,225,21,.4)">CONVERSÃO</span></div>
-        <div class="svc-icon" style="background:rgba(247,225,21,.08);border:1px solid rgba(247,225,21,.15)">
+        <div class="svc-glow" style="background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 70%)"></div>
+        <div class="svc-idx mono">01 <span style="color:rgba(255,255,255,.4)">CONVERSÃO</span></div>
+        <div class="svc-icon" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <rect x="1" y="2" width="20" height="14" rx="2" stroke="#F7E115" stroke-width="1.3"/>
-            <path d="M1 6h20" stroke="#F7E115" stroke-width="1.3" stroke-opacity=".4"/>
-            <circle cx="4" cy="4" r=".8" fill="#F7E115" fill-opacity=".5"/>
-            <circle cx="7" cy="4" r=".8" fill="#F7E115" fill-opacity=".5"/>
-            <circle cx="10" cy="4" r=".8" fill="#F7E115" fill-opacity=".5"/>
-            <path d="M6 10h10M8 13h6" stroke="#F7E115" stroke-width="1.3" stroke-linecap="round"/>
-            <path d="M7 19h8M11 16v3" stroke="#F7E115" stroke-width="1.3" stroke-linecap="round"/>
+            <rect x="1" y="2" width="20" height="14" rx="2" stroke="#FFFFFF" stroke-width="1.3"/>
+            <path d="M1 6h20" stroke="#FFFFFF" stroke-width="1.3" stroke-opacity=".4"/>
+            <circle cx="4" cy="4" r=".8" fill="#FFFFFF" fill-opacity=".5"/>
+            <circle cx="7" cy="4" r=".8" fill="#FFFFFF" fill-opacity=".5"/>
+            <circle cx="10" cy="4" r=".8" fill="#FFFFFF" fill-opacity=".5"/>
+            <path d="M6 10h10M8 13h6" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M7 19h8M11 16v3" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
         </div>
         <h3 class="svc-title">Landing Pages de Alta Conversão</h3>
@@ -1472,22 +1581,22 @@ footer{
         <div class="svc-bottom">
           <span class="svc-tag mono">web · design · seo · gsap</span>
           <div class="svc-arrow">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#F7E115" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
         </div>
       </div>
 
       <!-- Service 2 — Sistemas Empresariais -->
       <div class="svc-card gsap-hidden" style="margin-top:40px">
-        <div class="svc-glow" style="background:radial-gradient(circle,rgba(0,212,255,.12) 0%,transparent 70%)"></div>
-        <div class="svc-idx mono">02 <span style="color:rgba(0,212,255,.4)">ENTERPRISE</span></div>
-        <div class="svc-icon" style="background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15)">
+        <div class="svc-glow" style="background:radial-gradient(circle,rgba(160,160,160,.12) 0%,transparent 70%)"></div>
+        <div class="svc-idx mono">02 <span style="color:rgba(160,160,160,.4)">ENTERPRISE</span></div>
+        <div class="svc-icon" style="background:rgba(160,160,160,.06);border:1px solid rgba(160,160,160,.15)">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <rect x="1" y="1" width="8" height="8" rx="1.5" stroke="#00D4FF" stroke-width="1.3"/>
-            <rect x="13" y="1" width="8" height="8" rx="1.5" stroke="#00D4FF" stroke-width="1.3"/>
-            <rect x="1" y="13" width="8" height="8" rx="1.5" stroke="#00D4FF" stroke-width="1.3"/>
-            <rect x="13" y="13" width="8" height="8" rx="1.5" stroke="#00D4FF" stroke-width="1.3"/>
-            <path d="M9 5h4M11 9v4M9 17h4" stroke="#00D4FF" stroke-width="1" stroke-opacity=".4" stroke-linecap="round"/>
+            <rect x="1" y="1" width="8" height="8" rx="1.5" stroke="#AAAAAA" stroke-width="1.3"/>
+            <rect x="13" y="1" width="8" height="8" rx="1.5" stroke="#AAAAAA" stroke-width="1.3"/>
+            <rect x="1" y="13" width="8" height="8" rx="1.5" stroke="#AAAAAA" stroke-width="1.3"/>
+            <rect x="13" y="13" width="8" height="8" rx="1.5" stroke="#AAAAAA" stroke-width="1.3"/>
+            <path d="M9 5h4M11 9v4M9 17h4" stroke="#AAAAAA" stroke-width="1" stroke-opacity=".4" stroke-linecap="round"/>
           </svg>
         </div>
         <h3 class="svc-title">Sistemas Empresariais sob Medida</h3>
@@ -1501,7 +1610,7 @@ footer{
         <div class="svc-bottom">
           <span class="svc-tag mono">crm · erp · automação · api</span>
           <div class="svc-arrow">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#AAAAAA" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
         </div>
       </div>
@@ -1512,9 +1621,9 @@ footer{
         <div class="svc-idx mono">03 <span style="color:rgba(104,160,99,.5)">ESTRATÉGIA</span></div>
         <div class="svc-icon" style="background:rgba(104,160,99,.06);border:1px solid rgba(104,160,99,.18)">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <circle cx="11" cy="11" r="9" stroke="#68A063" stroke-width="1.3"/>
-            <path d="M11 7v4.5l3 1.5" stroke="#68A063" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M7 3.5C8.3 2.6 9.6 2 11 2" stroke="#68A063" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".4"/>
+            <circle cx="11" cy="11" r="9" stroke="#888888" stroke-width="1.3"/>
+            <path d="M11 7v4.5l3 1.5" stroke="#888888" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 3.5C8.3 2.6 9.6 2 11 2" stroke="#888888" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".4"/>
           </svg>
         </div>
         <h3 class="svc-title">Consultoria Técnica Estratégica</h3>
@@ -1528,7 +1637,7 @@ footer{
         <div class="svc-bottom">
           <span class="svc-tag mono">diagnóstico · roadmap · strategy</span>
           <div class="svc-arrow">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#68A063" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#888888" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
         </div>
       </div>
@@ -1547,7 +1656,7 @@ footer{
     <div class="port-header gsap-hidden">
       <div>
         <div class="stag"><div class="stag-line"></div><span class="stag-txt">portfólio selecionado</span></div>
-        <h2 style="font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,52px);color:#fff;line-height:1.05">
+        <h2 style="font-family:var(--wordmark);font-weight:900;font-size:clamp(28px,3.8vw,52px);color:#fff;line-height:1.05">
           Produtos que<br><span class="electric">fazem diferença</span>.
         </h2>
       </div>
@@ -1558,73 +1667,115 @@ footer{
     </div>
 
     <div class="port-grid" id="port-grid">
-      <!-- Featured -->
-      <div class="port-card featured gsap-hidden" style="display:flex;flex-direction:column">
-        <div class="port-accent-line" style="background:linear-gradient(90deg,#F7E115,rgba(247,225,21,.1))"></div>
-        <div class="port-type mono">FinTech · Plataforma Web · 2024</div>
-        <div class="port-name">PulseFinance</div>
-        <span class="port-metric" style="color:#F7E115;background:rgba(247,225,21,.08);border:1px solid rgba(247,225,21,.2)">
-          <span class="m-dot" style="background:#F7E115"></span>200k+ usuários ativos
-        </span>
-        <p class="port-desc">Dashboard de investimentos em tempo real com análise preditiva por ML, processando R$50M/mês em transações. Arquitetura event-driven com latência P99 abaixo de 80ms.</p>
-        <!-- Code snippet decoration -->
-        <div style="background:#020C18;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:11px;line-height:1.8;margin-bottom:20px;flex-shrink:0">
-          <div style="color:rgba(255,255,255,.2)">// performance metrics</div>
-          <div><span style="color:#C586C0">const</span> <span style="color:#9CDCFE">p99Latency</span> <span style="color:rgba(255,255,255,.4)">=</span> <span style="color:#B5CEA8">78</span><span style="color:rgba(255,255,255,.4)">;</span> <span style="color:rgba(255,255,255,.2)">// ms</span></div>
-          <div><span style="color:#C586C0">const</span> <span style="color:#9CDCFE">uptime</span> <span style="color:rgba(255,255,255,.4)">=</span> <span style="color:#CE9178">"99.97%"</span><span style="color:rgba(255,255,255,.4)">;</span></div>
-          <div><span style="color:#C586C0">const</span> <span style="color:#9CDCFE">deployFreq</span> <span style="color:rgba(255,255,255,.4)">=</span> <span style="color:#CE9178">"12x/dia"</span><span style="color:rgba(255,255,255,.4)">;</span></div>
-        </div>
-        <div class="port-chips" style="margin-top:auto">
-          <span class="port-chip">Next.js</span><span class="port-chip">Node.js</span>
-          <span class="port-chip">PostgreSQL</span><span class="port-chip">Redis</span>
-          <span class="port-chip">AWS EKS</span><span class="port-chip">Python ML</span>
-        </div>
-        <div class="port-bottom">
-          <span class="port-year mono">2024</span>
-          <div class="port-arrow" style="border-color:rgba(247,225,21,.3)">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#F7E115" stroke-width="1.5" stroke-linecap="round"/></svg>
+
+      <!-- Summize — Featured -->
+      <a href="https://pdfiasaas.vercel.app/" target="_blank" rel="noopener noreferrer" class="port-card featured gsap-hidden" style="display:flex;flex-direction:column;text-decoration:none;cursor:pointer">
+        <div class="port-accent-line" style="background:linear-gradient(90deg,#CCCCCC,rgba(255,255,255,.06))"></div>
+
+        <!-- Logo + header row -->
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:4px">
+          <!-- Summize logo SVG -->
+          <div style="width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(200,200,200,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="26" height="28" viewBox="0 0 80 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- top spike -->
+              <polygon points="40,0 46,22 34,22" fill="#9A8FFF" opacity=".9"/>
+              <!-- left spike -->
+              <polygon points="4,52 22,38 20,58" fill="#CCCCCC" opacity=".7"/>
+              <!-- right spike -->
+              <polygon points="76,52 58,38 60,58" fill="#CCCCCC" opacity=".7"/>
+              <!-- bottom-left spike -->
+              <polygon points="14,80 30,62 26,80" fill="#6357CC" opacity=".6"/>
+              <!-- bottom-right spike -->
+              <polygon points="66,80 50,62 54,80" fill="#6357CC" opacity=".6"/>
+              <!-- central shield body -->
+              <polygon points="40,18 62,36 58,62 40,74 22,62 18,36" fill="#CCCCCC" opacity=".85"/>
+              <!-- inner V shape -->
+              <polyline points="28,46 40,58 52,46" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="port-type mono" style="margin-bottom:2px">SaaS · IA · Produtividade · 2025</div>
+            <div class="port-name" style="line-height:1">Summize</div>
           </div>
         </div>
-      </div>
+
+        <span class="port-metric" style="color:#CCCCCC;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);margin-top:12px">
+          <span class="m-dot" style="background:#CCCCCC"></span>+2.000 usuários satisfeitos
+        </span>
+        <p class="port-desc">SaaS de inteligência artificial que resume qualquer PDF em segundos — pontos principais, resumo completo e perguntas de estudo geradas automaticamente. Ideal para estudantes, profissionais e empresas que precisam absorver conteúdo com velocidade.</p>
+
+        <!-- Feature highlights -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:28px;height:28px;border-radius:6px;background:rgba(200,200,200,.12);border:1px solid rgba(200,200,200,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L8 5h4L9 7.5l1 4-3.5-2.5L3 11.5l1-4L1 5h4z" stroke="#CCCCCC" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-size:13px;color:rgba(212,220,232,.6)">Resumo completo gerado em menos de 30 segundos</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:28px;height:28px;border-radius:6px;background:rgba(200,200,200,.12);border:1px solid rgba(200,200,200,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2l4 4.5L7 11" stroke="#CCCCCC" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-size:13px;color:rgba(212,220,232,.6)">Pontos principais e perguntas de estudo automáticas</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:28px;height:28px;border-radius:6px;background:rgba(200,200,200,.12);border:1px solid rgba(200,200,200,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="1.5" width="10" height="10" rx="2" stroke="#CCCCCC" stroke-width="1.2"/><path d="M4 6.5h5M4 4.5h5M4 8.5h3" stroke="#CCCCCC" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+            <span style="font-size:13px;color:rgba(212,220,232,.6)">3 resumos grátis · Sem cartão de crédito</span>
+          </div>
+        </div>
+
+        <div class="port-chips" style="margin-top:auto">
+          <span class="port-chip">Next.js</span><span class="port-chip">IA / NLP</span>
+          <span class="port-chip">TypeScript</span><span class="port-chip">Vercel</span>
+        </div>
+        <div class="port-bottom">
+          <span class="port-year mono" style="color:#CCCCCC">pdfiasaas.vercel.app ↗</span>
+          <div class="port-arrow" style="border-color:rgba(200,200,200,.3)">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </a>
 
       <!-- Small cards -->
       <div style="display:flex;flex-direction:column;gap:16px">
         <div class="port-card gsap-hidden" style="display:flex;flex-direction:column">
-          <div class="port-accent-line" style="background:linear-gradient(90deg,#00D4FF,rgba(0,212,255,.1))"></div>
-          <div class="port-type mono">Enterprise · ERP · 2024</div>
-          <div class="port-name" style="font-size:26px">LogiTrack Pro</div>
-          <span class="port-metric" style="color:#00D4FF;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.18)">
-            <span class="m-dot" style="background:#00D4FF"></span>40% + eficiência operacional
+          <div class="port-accent-line" style="background:linear-gradient(90deg,#FFFFFF,rgba(255,255,255,.1))"></div>
+          <div class="port-type mono">Landing Page · Conversão · 2025</div>
+          <div class="port-name" style="font-size:26px">Seu projeto aqui</div>
+          <span class="port-metric" style="color:#FFFFFF;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)">
+            <span class="m-dot" style="background:#FFFFFF"></span>próximo case em construção
           </span>
-          <p class="port-desc">Sistema de logística com rastreamento GPS, IA para otimização de rotas e BI em tempo real. Frota de 3k+ veículos, 24/7.</p>
+          <p class="port-desc">Estamos construindo algo novo. Se você tem um projeto de landing page ou sistema, pode ser o próximo case aqui.</p>
           <div class="port-chips" style="margin-top:auto">
-            <span class="port-chip">React</span><span class="port-chip">Python</span>
-            <span class="port-chip">Redis</span><span class="port-chip">GCP</span>
+            <span class="port-chip">Next.js</span><span class="port-chip">GSAP</span>
+            <span class="port-chip">TypeScript</span><span class="port-chip">Tailwind</span>
           </div>
           <div class="port-bottom">
-            <span class="port-year mono">2024</span>
-            <div class="port-arrow" style="border-color:rgba(0,212,255,.3)">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <a href="#contato" class="port-year mono" style="color:#FFFFFF;text-decoration:none">fale conosco ↗</a>
+            <div class="port-arrow" style="border-color:rgba(255,255,255,.3)">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
           </div>
         </div>
 
         <div class="port-card gsap-hidden" style="display:flex;flex-direction:column">
-          <div class="port-accent-line" style="background:linear-gradient(90deg,#68A063,rgba(104,160,99,.1))"></div>
-          <div class="port-type mono">HealthTech · Mobile · 2023</div>
-          <div class="port-name" style="font-size:26px">MedConnect</div>
-          <span class="port-metric" style="color:#68A063;background:rgba(104,160,99,.08);border:1px solid rgba(104,160,99,.2)">
-            <span class="m-dot" style="background:#68A063"></span>4.9★ App Store · 1M downloads
+          <div class="port-accent-line" style="background:linear-gradient(90deg,#AAAAAA,rgba(160,160,160,.1))"></div>
+          <div class="port-type mono">Sistema Empresarial · Em breve</div>
+          <div class="port-name" style="font-size:26px">Case confidencial</div>
+          <span class="port-metric" style="color:#AAAAAA;background:rgba(160,160,160,.06);border:1px solid rgba(160,160,160,.18)">
+            <span class="m-dot" style="background:#AAAAAA"></span>em desenvolvimento · NDA ativo
           </span>
-          <p class="port-desc">Telemedicina, prontuário eletrônico e integração com planos de saúde. LGPD compliant, criptografia end-to-end.</p>
+          <p class="port-desc">Sistema empresarial em andamento. Detalhes disponíveis mediante contato e acordo de confidencialidade.</p>
           <div class="port-chips" style="margin-top:auto">
-            <span class="port-chip">React Native</span><span class="port-chip">TypeScript</span>
-            <span class="port-chip">Firebase</span><span class="port-chip">HIPAA</span>
+            <span class="port-chip">Next.js</span><span class="port-chip">Node.js</span>
+            <span class="port-chip">PostgreSQL</span><span class="port-chip">Vercel</span>
           </div>
           <div class="port-bottom">
-            <span class="port-year mono">2023</span>
-            <div class="port-arrow" style="border-color:rgba(104,160,99,.3)">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#68A063" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <a href="#contato" class="port-year mono" style="color:#AAAAAA;text-decoration:none">solicitar detalhes ↗</a>
+            <div class="port-arrow" style="border-color:rgba(160,160,160,.3)">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#AAAAAA" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
           </div>
         </div>
@@ -1772,34 +1923,34 @@ footer{
     <div class="contact-grid">
       <div class="gsap-hidden">
         <div class="stag"><div class="stag-line"></div><span class="stag-txt">fale conosco</span></div>
-        <h2 style="font-family:var(--display);font-weight:800;font-size:clamp(28px,3.5vw,52px);color:#fff;line-height:1.05;margin-bottom:20px">
+        <h2 style="font-family:var(--wordmark);font-weight:900;font-size:clamp(28px,3.5vw,52px);color:#fff;line-height:1.05;margin-bottom:20px">
           Próximo projeto?<br><span class="electric">Vamos conversar.</span>
         </h2>
         <p class="contact-left" style="font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:36px;max-width:380px">
           Resposta em até 24h com análise técnica inicial e estimativa de esforço. Sem pitch genérico — direto ao ponto.
         </p>
         <div class="contact-methods">
-          <div class="cmethod">
-            <div class="cmethod-icon">✉</div>
-            <div>
-              <div class="cmethod-label">E-mail</div>
-              <div class="cmethod-val">oi@kodastack.com.br</div>
+          <a href="https://www.instagram.com/giraldidev/" target="_blank" rel="noopener noreferrer" class="cmethod" style="text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.2)'" onmouseout="this.style.borderColor=''">
+            <div class="cmethod-icon" style="display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#E0E0E0" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="#E0E0E0" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="#E0E0E0"/></svg>
             </div>
-          </div>
-          <div class="cmethod">
-            <div class="cmethod-icon">📱</div>
-            <div>
-              <div class="cmethod-label">WhatsApp</div>
-              <div class="cmethod-val">+55 (14) 99823-8439</div>
+            <div class="cmethod-label">Instagram</div>
+            <svg style="margin-left:auto;opacity:.3" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/vinicius-giraldi-8460b53a5/" target="_blank" rel="noopener noreferrer" class="cmethod" style="text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.2)'" onmouseout="this.style.borderColor=''">
+            <div class="cmethod-icon" style="display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#E0E0E0" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </div>
-          </div>
-          <div class="cmethod">
-            <div class="cmethod-icon">📍</div>
-            <div>
-              <div class="cmethod-label">Base</div>
-              <div class="cmethod-val">São Paulo, SP — Brasil · remote-first</div>
+            <div class="cmethod-label">LinkedIn</div>
+            <svg style="margin-left:auto;opacity:.3" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="https://github.com/giraldidev" target="_blank" rel="noopener noreferrer" class="cmethod" style="text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.2)'" onmouseout="this.style.borderColor=''">
+            <div class="cmethod-icon" style="display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(240,240,240,.7)"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
             </div>
-          </div>
+            <div class="cmethod-label">GitHub</div>
+            <svg style="margin-left:auto;opacity:.3" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
         </div>
       </div>
 
@@ -1881,7 +2032,7 @@ footer{
             <!-- WhatsApp follow-up -->
             <a id="wa-success-link" href="#" target="_blank"
               style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#25D366;color:#fff;border-radius:8px;font-family:var(--mono);font-weight:700;font-size:13px;text-decoration:none;transition:box-shadow .3s"
-              onmouseover="this.style.boxShadow='0 0 24px rgba(37,211,102,.4)'"
+              onmouseover="this.style.boxShadow='0 0 24px rgba(255,255,255,.3)'"
               onmouseout="this.style.boxShadow='none'">
               <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
                 <path d="M16 3C8.82 3 3 8.82 3 16c0 2.38.65 4.61 1.78 6.53L3 29l6.64-1.74A13 13 0 0016 29c7.18 0 13-5.82 13-13S23.18 3 16 3z" fill="rgba(255,255,255,.3)"/>
@@ -1904,8 +2055,12 @@ footer{
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#" class="logo">
-          <div class="logo-mark"><span>K//</span></div>
-          <span class="logo-name">koda<em>stack</em></span>
+          <div class="logo-mark">
+            <div style="background:#fff;border-radius:8px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+              <img src="https://i.imgur.com/Z8J57bO.jpeg" alt="Koda" style="width:34px;height:34px;object-fit:contain"/>
+            </div>
+          </div>
+          <span class="logo-name">KODA<em>STACK</em></span>
         </a>
         <p>Engenharia de software de alto impacto. Full stack, focado no futuro, comprometido com o seu resultado.</p>
         <div class="socials">
@@ -2072,7 +2227,7 @@ mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
     draw(){
       ctx.beginPath();
       ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(247,225,21,${this.alpha})`;
+      ctx.fillStyle=`rgba(255,255,255,${this.alpha})`;
       ctx.fill();
     }
   }
@@ -2091,7 +2246,7 @@ mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
         if(d<CONNECT){
           const a=(1-d/CONNECT)*.25;
           ctx.beginPath();
-          ctx.strokeStyle=`rgba(247,225,21,${a})`;
+          ctx.strokeStyle=`rgba(255,255,255,${a})`;
           ctx.lineWidth=.5;
           ctx.moveTo(particles[i].x,particles[i].y);
           ctx.lineTo(particles[j].x,particles[j].y);
@@ -2385,11 +2540,11 @@ document.querySelectorAll('.port-card').forEach(card=>{
 /* ── Input focus ripple ───────────────── */
 document.querySelectorAll('.finput,.fselect,.ftextarea').forEach(el=>{
   el.addEventListener('focus',()=>{
-    gsap.fromTo(el,{boxShadow:'0 0 0 0 rgba(247,225,21,0)'},
-      {boxShadow:'0 0 0 3px rgba(247,225,21,.1)',duration:.3,ease:'power2.out'});
+    gsap.fromTo(el,{boxShadow:'0 0 0 0 rgba(255,255,255,0)'},
+      {boxShadow:'0 0 0 3px rgba(255,255,255,.1)',duration:.3,ease:'power2.out'});
   });
   el.addEventListener('blur',()=>{
-    gsap.to(el,{boxShadow:'0 0 0 0 rgba(247,225,21,0)',duration:.3});
+    gsap.to(el,{boxShadow:'0 0 0 0 rgba(255,255,255,0)',duration:.3});
   });
 });
 
